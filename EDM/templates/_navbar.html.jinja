@@ -1,0 +1,38 @@
+<nav id="VerticalNavContent" class="navbar">
+    <div class="navbar_elements">
+        <div class="navbar_mainElements">
+            <div class="navbar_buttons">
+                <div class="navbar_logo" aria-label="Главная">
+                    <a href="/" class="navbar_logo_href" aria-label="Главная">
+                        <div class="navbar_logo_href_logoIcon">
+                            <img src="{{ url_for('static', filename='images/navbar_logo.png') }}" alt="Logo" class="navbar_logo_href_logoIcon_img">
+                        </div>
+                    </a>
+                </div>
+                <div class="navbar_homeButton" aria-label="Главная">
+                    <a href="/" class="navbar_homeButton_href" aria-label="Главная">
+                        <div class="navbar_homeButton_href_homeIcon">
+                            <img src="{{ url_for('static', filename='images/navbar_home_btn.png') }}" alt="Home" class="navbar_homeButton_href_homeIcon_img">
+                        </div>
+                    </a>
+                </div>
+                <div class="navbar_supportButton">
+                    <a href="/" class="navbar_supportButton_href" aria-label="Главная">
+                        <div class="navbar_supportButton_href_supportIcon">
+                            <img src="{{ url_for('static', filename='images/navbar_support_btn.png') }}" alt="Home" class="navbar_supportButton_href_supportIcon_img">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar_otherButton">
+                <div class="navbar_otherButton_settingsButton" aria-label="Настройки">
+                    <a href="/" class="navbar_otherButton_settingsButton_href">
+                        <div class="navbar_otherButton_settingsButton_href_settingsIcon">
+                            <img src="{{ url_for('static', filename='images/navbar_settings_btn.png') }}" alt="Settings" class="navbar_otherButton_settingsButton_href_settingsIcon_img">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

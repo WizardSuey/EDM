@@ -1,0 +1,24 @@
+[project]
+name = "EDM"
+version = "0.0.1"
+authors = [
+    {name="WizardSuey", email="dorogino@gmail.com"},
+]
+description = "EDM"
+readme = "README.md"
+dependencies = [
+    "flask",
+    "flask_socketio",
+    "flask-script",
+    "psycopg2-binary",
+    "Flask-WTF",
+]
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/WizardSuey"
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
