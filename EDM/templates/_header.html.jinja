@@ -1,41 +1,20 @@
-<div id="HeaderContent" class="header">
-    <div class="header_box">
-        <div class="header_elements">
-            <div class="header_elements_searchBoxContainer">
-                <div class="header_elements_searchBoxContainer_itemsBox">
-                    <div class="header_elements_searchBoxContainer_itemsBox_items">
-                        <div class="header_elements_searchBoxContainer_itemsBox_items_searchIcon">
-                            <img src="{{ url_for('static', filename='images/navbar_search_icon.png') }}" alt="search" class="header_elements_searchBoxContainer_itemsBox_items_searchIcon_img">
-                        </div>
-                        <div class="header_elements_searchBoxContainer_itemsBox_items_inputBox">
-                            <input type="text" class="header_elements_searchBoxContainer_itemsBox_items_inputBox_inputField" 
-                                autocapitalize="off"
-                                autocomplete="off"
-                                autocorrect="off"
-                                name="searchBoxInput"
-                                placeholder="Поиск"
-                                type="text"
-                                >
-                        </div>
-                    </div>
-                </div>
+<div class="header">
+    <div class="header_elements">
+        <div class="header_elements_logo">
+            <img class="logo_image" src="{{ url_for('static', filename='images/logo.png') }}">
+            <div class="logo_text">
+                <p class="logo_text_text">ErgoDocs</p>
             </div>
-            <div class="header_elements_searchBoxContainer_user_profile">
-                <a href="{{ url_for('auth.logout') }}" class="header_elements_searchBoxContainer_user_profile_href">
-                    <div class="header_elements_searchBoxContainer_user_profile_href_image_box">
-                        <div class="header_elements_searchBoxContainer_user_profile_href_image_box_container">
-                            <div class="header_elements_searchBoxContainer_user_profile_href_image_box_container_inner_container">
-                                <div class="header_elements_searchBoxContainer_user_profile_href_image_box_container_inner_container_avatar">
-                                    <div class="header_elements_searchBoxContainer_user_profile_href_image_box_container_inner_container_avatar_box">
-                                        <img src="{{ url_for('static', filename='images/default_user_avatar.jpg') }}" alt="User" class="header_elements_searchBoxContainer_user_profile_href_image_box_container_inner_container_avatar_box_img">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+        </div>
+        <div class="header_elements_user">
+            <div class="user_username">
+                <p class="user_username_name_text">{{ user.name }}</p>
+                <p class="user_username_second_name_text">{{ user.second_name }}</p>
+                <p class="user_username_surname_text">{{ user.surname }}</p>
             </div>
+            <a class="user_username_avatar" href="{{ url_for('auth.logout') }}">
+                <img class="user_username_avatar_img" src="{{ url_for('static', filename='images/default_user_avatar.jpg') }}">
+            </a>
         </div>
     </div>
 </div>
-

@@ -4,9 +4,9 @@ from wtforms import (
 
 
 class LoginForm(Form):
-    login = StringField(None, [
+    login = StringField("Логин", [
         validators.DataRequired()
         ])
-    password = PasswordField(None, [
+    password = PasswordField("Пароль", [
         validators.DataRequired()
     ])

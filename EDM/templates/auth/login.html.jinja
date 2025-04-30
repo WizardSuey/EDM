@@ -4,26 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Login Page</title>
 </head>
 <body>
-    <div class="main">
-    <p class="sign" align="center">Войти</p>
-        {% from "_formhelpers.html.jinja" import render_field %}
-        <form class="loginForm" method="post">     
-            {{ render_field(form.login, class="login", align="center", placeholder="Логин") }}
-            {{ render_field(form.password, class="password", align="center", placeholder="Пароль") }}
-            <input type="submit" value="Login" class="submit">
-        </form>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class=flashes>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-    </div>
+        <div class="auth_container">
+            <div class="auth_text_container">
+                <p class="auth_text_main">ErgoDocs</p>
+                <p class="auth_subtext">Вход</p>
+            </div>
+            <hr class="auth_container_line">
+            {% from "_formhelpers.html.jinja" import render_field %}
+            <form class="auth_login_form" method="post">     
+                <div class="auth_login_form_login">
+                    {{ form.login.label(class_="auth_login_form_login_label") }}
+                    {{ render_field(form.login, class="auth_login_form_login_input", align="center") }}
+                </div>
+                <div class="auth_login_form_password">
+                    {{ form.password.label(class_="auth_login_form_password_label") }}
+                    {{ render_field(form.password, class="auth_login_form_password_input", align="center") }}
+                </div>
+                <input type="submit" value="Войти" class="auth_login_form_submit">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=auth_flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
 </body>
 </html>

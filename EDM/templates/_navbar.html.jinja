@@ -1,38 +1,24 @@
-<nav id="VerticalNavContent" class="navbar">
-    <div class="navbar_elements">
-        <div class="navbar_mainElements">
-            <div class="navbar_buttons">
-                <div class="navbar_logo" aria-label="Главная">
-                    <a href="/" class="navbar_logo_href" aria-label="Главная">
-                        <div class="navbar_logo_href_logoIcon">
-                            <img src="{{ url_for('static', filename='images/navbar_logo.png') }}" alt="Logo" class="navbar_logo_href_logoIcon_img">
-                        </div>
-                    </a>
-                </div>
-                <div class="navbar_homeButton" aria-label="Главная">
-                    <a href="/" class="navbar_homeButton_href" aria-label="Главная">
-                        <div class="navbar_homeButton_href_homeIcon">
-                            <img src="{{ url_for('static', filename='images/navbar_home_btn.png') }}" alt="Home" class="navbar_homeButton_href_homeIcon_img">
-                        </div>
-                    </a>
-                </div>
-                <div class="navbar_supportButton">
-                    <a href="/" class="navbar_supportButton_href" aria-label="Главная">
-                        <div class="navbar_supportButton_href_supportIcon">
-                            <img src="{{ url_for('static', filename='images/navbar_support_btn.png') }}" alt="Home" class="navbar_supportButton_href_supportIcon_img">
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="navbar_otherButton">
-                <div class="navbar_otherButton_settingsButton" aria-label="Настройки">
-                    <a href="/" class="navbar_otherButton_settingsButton_href">
-                        <div class="navbar_otherButton_settingsButton_href_settingsIcon">
-                            <img src="{{ url_for('static', filename='images/navbar_settings_btn.png') }}" alt="Settings" class="navbar_otherButton_settingsButton_href_settingsIcon_img">
-                        </div>
-                    </a>
-                </div>
-            </div>
+<div class="navbar">
+    <div class="navbar_elements_container">
+        <div class="navbar_elements">
+            <a class="navbar_element_create" href="/">
+                <img class="navbar_element_create_image" src="{{ url_for('static', filename='images/create.png') }}">
+            </a>
+            <a class="navbar_element_upload">
+                <img class="navbar_element_upload_image" src="{{ url_for('static', filename='images/upload.png') }}">
+            </a>
+            <a class="navbar_element_documentOut">
+                <img class="navbar_element_documentOut_image" src="{{ url_for('static', filename='images/document_out.png') }}">
+            </a>
+            <a class="navbar_element_documentIn">
+                <img class="navbar_element_documentIn_image" src="{{ url_for('static', filename='images/document_in.png') }}">
+            </a>
+            <a class="navbar_element_counterparties">
+                <img class="navbar_element_counterparties_image" src="{{ url_for('static', filename='images/counterparties.png') }}">
+            </a>
+            <a class="navbar_element_support">
+                <img class="navbar_element_support_image" src="{{ url_for('static', filename='images/support.png') }}">
+            </a>
         </div>
     </div>
-</nav>
+</div>

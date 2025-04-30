@@ -21,11 +21,6 @@ def create_app(config: str = 'dev'):
     else:
         raise ValueError(f'Unknown config: {config}')
 
-    try:
-        os.mkdir(app.instance_path)
-    except OSError:
-        pass
-
     from . import databae
     databae.init_app(app)
 
@@ -34,8 +29,14 @@ def create_app(config: str = 'dev'):
     from . import auth
     app.register_blueprint(auth.bp)
 
+    from . import admin
+    app.register_blueprint(admin.bp)
+
     from . import dashboard
     app.register_blueprint(dashboard.bp)
     app.add_url_rule('/', endpoint='dashboard.index')
+
+    from . import documents
+    app.register_blueprint(documents.bp)
 
     return app

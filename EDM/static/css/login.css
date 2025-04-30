@@ -1,119 +1,363 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
 body {
-    background-color: #ffffff;
-    font-family: 'Ubuntu', sans-serif;
+    /* body */
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    background: rgb(230, 230, 230);
 }
 
-.main {
-    background-color: #FFFFFF;
-    width: 400px;
-    height: 400px;
-    margin: 7em auto;
-    border-radius: 1.5em;
-    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+ul {
+    list-style: none;
 }
 
-.sign {
-    padding-top: 40px;
-    color: #297309;
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: bold;
-    font-size: 23px;
+
+.auth_container {
+    /* auth_container */
+    position: static;
+    min-width: 300px;
+    width: 450px;
+    height: 500px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0px 0px 0px;
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    border-radius: 10px;
+
+    background: rgb(255, 255, 255);
 }
 
-.login {
-width: 76%;
-color: rgb(38, 50, 56);
-font-weight: 700;
-font-size: 14px;
-letter-spacing: 1px;
-background: rgba(136, 126, 126, 0.04);
-padding: 10px 20px;
-border: none;
-border-radius: 20px;
-outline: none;
-box-sizing: border-box;
-border: 2px solid rgba(0, 0, 0, 0.02);
-margin-bottom: 50px;
-margin-left: 46px;
+.auth_text_container {
+    /* auth_text_container */
+    position: static;
+    width: 118px;
+    height: 55px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    /* background: rgb(255, 255, 255); */
+}
+
+.auth_text_main {
+    /* auth_text_main */
+    position: static;
+    width: 118px;
+    height: 39px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    color: rgb(0, 0, 0);
+    font-family: Akshar;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 45px;
+    letter-spacing: 0px;
 text-align: center;
-margin-bottom: 27px;
-font-family: 'Ubuntu', sans-serif;
 }
 
-form.loginForm {
-    padding-top: 40px;
-}
-
-.password {
-        width: 76%;
-color: rgb(38, 50, 56);
-font-weight: 700;
-font-size: 14px;
-letter-spacing: 1px;
-background: rgba(136, 126, 126, 0.04);
-padding: 10px 20px;
-border: none;
-border-radius: 20px;
-outline: none;
-box-sizing: border-box;
-border: 2px solid rgba(0, 0, 0, 0.02);
-margin-bottom: 50px;
-margin-left: 46px;
-text-align: center;
-margin-bottom: 27px;
-font-family: 'Ubuntu', sans-serif;
-}
+.auth_subtext {
+    /* auth_subtext */
+    position: static;
+    width: 41px;
+    height: 16px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
 
 
-.login:focus, .password:focus {
-    border: 2px solid rgba(0, 0, 0, 0.18) !important;
-    
-}
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 
-.submit {
-  cursor: pointer;
-    border-radius: 5em;
-    color: #fff;
-    background: linear-gradient(to right, #297309, #0e9e13);
-    border: 0;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    font-family: 'Ubuntu', sans-serif;
-    margin-left: 35%;
-    font-size: 13px;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-}
-
-input {
-    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-    color: #E1BEE7;
-    text-decoration: none
-}
-
-@media (max-width: 600px) {
-    .main {
-        border-radius: 0px;
-    }
-}
-
-.flashes {
-    background-color: #f8d7da; /* Light red background for error messages */
-    color: #721c24; /* Dark red text color */
-    padding: 10px;
-    margin: 10px auto; /* Center the flashes */
-    border: 1px solid #f5c6cb; /* Border color matching the background */
-    border-radius: 5px;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: rgb(0, 0, 0);
+    font-family: Akshar;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 0px;
     text-align: center;
-    width: 80%; /* Adjust the width to be smaller */
 }
 
-ul, ol {
-    list-style-type: none; /* Remove list decorations */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
+.auth_container_line {
+    /* auth_container_line */
+    position: static;
+    width: 290px;
+    height: 0;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    border: 1px solid rgb(228, 227, 227);
+}
+
+.auth_login_form {
+    /* auth_login_form */
+    position: static;
+    width: 350px;
+    height: 400px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+
+    /* background: rgb(255, 255, 255); */
+}
+
+.auth_login_form_login {
+   /* auth_login_form_login */
+    position: static;
+    width: 350px;
+    height: 48px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.auth_login_form_login_label {
+    /* auth_login_form_login_label */
+    position: static;
+    width: 36px;
+    height: 13px;
+    /* Auto layout */
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    color: rgb(0, 0, 0);
+    font-family: Akshar;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 15px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.auth_login_form_login_input {
+    /* auth_login_form_login_input */
+    position: static;
+    width: 350px;
+    height: 35px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    box-sizing: border-box;
+    border: 1px solid rgb(212, 212, 212);
+    background: rgb(255, 255, 255);
+
+    color: rgb(0, 0, 0);
+    font-family: Akshar;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    text-align: start;
+}
+
+.auth_login_form_password {
+    /* auth_login_form_password */
+    position: static;
+    width: 350px;
+    height: 48px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.auth_login_form_password_label {
+    /* auth_login_form_password_label */
+    position: static;
+    width: 36px;
+    height: 13px;
+    /* Auto layout */
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 5px;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    color: rgb(0, 0, 0);
+    font-family: Akshar;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 15px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.auth_login_form_password_input {
+    /* auth_login_form_password_input */
+    position: static;
+    width: 350px;
+    height: 35px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    box-sizing: border-box;
+    border: 1px solid rgb(212, 212, 212);
+    background: rgb(255, 255, 255);
+
+    color: rgb(0, 0, 0);
+    font-family: Akshar;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0px;
+    text-align:start;
+}
+
+.auth_login_form_submit {
+    /* auth_login_form_submit */
+    position: static;
+    width: 350px;
+    height: 45px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+
+    border-radius: 5px;
+
+    background: rgb(46, 115, 69);
+
+    color: rgb(255, 255, 255);
+    font-family: Akshar;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+
+    border: none;
+}
+
+.auth_flashes {
+    /* auth_flashes */
+    position: static;
+    width: 100%;
+    height: 30px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    order: 3;
+
+    /* Default styling for flash messages */
+    background: rgb(255, 230, 230); /* Light red background for error messages */
+    color: rgb(150, 0, 0); /* Dark red text for error messages */
+    font-family: Akshar;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid rgb(212, 212, 212);
 }
