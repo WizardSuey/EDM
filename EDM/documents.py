@@ -1,10 +1,12 @@
 import functools
 import random
 import datetime
+import os
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for 
+    Blueprint, flash, g, redirect, render_template, request, session, url_for, current_app
 )
+from werkzeug.utils import secure_filename
 
 from EDM.databae import get_db, current_user
 from EDM.auth import login_required
@@ -12,8 +14,13 @@ from EDM.document_create_select_type_form import SelectCreateDocumentForm
 from EDM.create_utd_form import UtdDocumentForm
 from EDM.add_items_utd_form import UtdDocumentItemsForm
 from EDM.create_contract_form import ContractDocumentForm
+from EDM.add_text_contract_form import ContractDocumentAddTextForm
 
 bp = Blueprint('documents', __name__, template_folder='templates/documents', url_prefix='/documents')
+
+
+# def allowed_file(filename):
+#     return '.' in filename and filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
 
 def organization_required(document_type):
@@ -265,7 +272,7 @@ def utd_add_items(document_id):
 @login_required
 def create_upd():
     """ Страница создания УПД """
-    form = UtdDocumentForm(request.form, data={
+    form = UtdDocumentForm(data={
         'number': generate_document_number('utd'),
         'creator': current_user(g.user).id,
         'creator_counterparty': current_user(g.user).organization,
@@ -280,43 +287,65 @@ def create_upd():
         'updated_at': datetime.datetime.now()
     })
     current_date = datetime.datetime.now().strftime('%Y.%m.%d')
-    if request.method == "POST" and form.validate():
-        error = None
-        number = form.number.data
-        counterparty = form.counterparty.data
-        creator = form.creator.data
-        creator_counterparty = form.creator_counterparty.data
-        consignee = form.consignee.data
-        provider = form.provider.data
-        payer = form.payer.data
-        amount = form.amount.data
-        document_type = form.document_type.data
-        document_status = form.document_status.data
-        db = get_db()
-        cur = db.cursor()
-        try:
-            cur.execute(
-                "INSERT INTO utd_documents (number, counterparty, creator, creator_counterparty, consignee, provider, payer, amount, document_type, document_status) VALUES \
-                    (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                (number, counterparty, creator, creator_counterparty, consignee, provider, payer, amount, document_type, document_status)
-            )
-            db.commit()
-            cur.execute(
-                "SELECT * FROM utd_documents WHERE number = %s", (number,)
-            )
-            document = cur.fetchone()
-            print(document)
-            print(f"Документ {number} создан\nDataBase ID: {document.id}")
-            return redirect(url_for('documents.utd_add_items', document_id=document.id))
-        except Exception as e:
-            print(f"{e}")
-            error = f"Произошла ошибка: {e}"
-            flash(error, category="error")
+    if request.method == "POST":
+        if form.validate_on_submit():
+            error = None
+            number = form.number.data
+            counterparty = form.counterparty.data
+            creator = form.creator.data
+            creator_counterparty = form.creator_counterparty.data
+            consignee = form.consignee.data
+            provider = form.provider.data
+            payer = form.payer.data
+            amount = form.amount.data
+            document_type = form.document_type.data
+            document_status = form.document_status.data
+            files = form.files.data
 
-    elif request.method == "POST":
-        error = f"Произошла ошибка: {form.errors}"
-        print(form.errors)
-        flash(error, category="error")
+            db = get_db()
+            cur = db.cursor()
+            try:
+                cur.execute(
+                    "INSERT INTO utd_documents (number, counterparty, creator, creator_counterparty, consignee, provider, payer, amount, document_type, document_status) VALUES \
+                        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    (number, counterparty, creator, creator_counterparty, consignee, provider, payer, amount, document_type, document_status)
+                )
+                db.commit()
+                cur.execute(
+                    "SELECT * FROM utd_documents WHERE number = %s", (number,)
+                )
+                document = cur.fetchone()
+                print(document)
+                print(f"Документ {number} создан\nDataBase ID: {document.id}")
+
+                document_folder = os.path.join(current_app.config['UTD_DOCS_UPLOAD_FOLDER'], str(document.id))
+                os.makedirs(document_folder, exist_ok=True)
+
+                for index, file in enumerate(files, start=1):
+                    filename = secure_filename(file.filename)
+                    file_path = os.path.join(document_folder, f"{index}.{filename.split('.')[-1]}")
+                    file.save(file_path)
+
+                cur.execute(
+                    "UPDATE utd_documents SET file_path = %s WHERE id = %s",
+                    (document_folder, document.id)
+                )
+                cur.execute(
+                    "UPDATE utd_documents SET updated_at = %s WHERE id = %s",
+                    (datetime.datetime.now(), document.id)
+                )
+                db.commit()
+
+                return redirect(url_for('documents.utd_add_items', document_id=document.id))
+            except Exception as e:
+                print(f"{e}")
+                error = f"Произошла ошибка: {e}"
+                flash(error, category="error")
+
+        else:
+            error = f"Произошла ошибка: {form.errors}"
+            print(form.errors)
+            flash(error, category="error")
 
     return render_template('documents/create_utd.html.jinja', user=current_user(g.user), current_date=current_date, form=form)
 
@@ -328,7 +357,47 @@ def contract_add_text(document_id):
     """ Страница добавления текста в Договор """
     if check_document_status(document_id, 'contract')[0] != 1:
         return redirect(url_for('dashboard.index'))
-    return render_template('documents/add_text_contract.html.jinja', user=current_user(g.user), document_id=document_id)
+
+    form = ContractDocumentAddTextForm()
+
+    if request.method == "POST":
+        if form.validate_on_submit():
+            files = form.files.data
+            if not files:
+                flash('No files selected', category='error')
+                return redirect(request.url)
+
+            # Create a directory for the document
+            document_folder = os.path.join(current_app.config['CONTRACT_DOCS_UPLOAD_FOLDER'], str(document_id))
+            os.makedirs(document_folder, exist_ok=True)
+
+            for index, file in enumerate(files, start=1):
+                filename = secure_filename(file.filename)
+                file_path = os.path.join(document_folder, f"{index}.docx")
+                file.save(file_path)
+                flash(f'File {filename} saved as {file_path}')
+
+            db = get_db()
+            cur = db.cursor()
+            try:
+                cur.execute(
+                    "UPDATE contract_documents SET file_path = %s WHERE id = %s",
+                    (document_folder, document_id)
+                )
+                cur.execute(
+                    "UPDATE contract_documents SET updated_at = %s WHERE id = %s",
+                    (datetime.datetime.now(), document_id)
+                )
+                db.commit()
+                return redirect(url_for('documents.outcoming'))
+            except Exception as e:
+                print(f"{e}")
+                error = f"Произошла ошибка: {e}"
+                flash(error, category="error")
+        else:
+            flash(f"Form validation failed: {form.errors}", category="error")
+
+    return render_template('documents/add_text_contract.html.jinja', user=current_user(g.user), document_id=document_id, form=form)
 
 @bp.route('/create/contract/create', methods=['GET', 'POST'])
 @login_required

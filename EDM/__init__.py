@@ -1,5 +1,7 @@
 from flask import Flask, render_template
+from werkzeug.utils import secure_filename
 from flask_socketio import SocketIO
+from flask_ckeditor import CKEditor
 import os
 import logging
 
@@ -7,6 +9,7 @@ import logging
 # logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
 socketio = SocketIO()
+ckeditor = CKEditor()
 
 def create_app(config: str = 'dev'):
     app = Flask(__name__)
@@ -25,6 +28,7 @@ def create_app(config: str = 'dev'):
     databae.init_app(app)
 
     socketio.init_app(app)
+    ckeditor.init_app(app)
 
     from . import auth
     app.register_blueprint(auth.bp)

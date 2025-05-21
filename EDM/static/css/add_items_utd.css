@@ -255,6 +255,25 @@
     margin: 0px;
 }
 
+.utd_form_add_items_form_item_files {
+/* item */
+    position: static;
+    width: 600px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 0px;
+}
+
 .utd_form_add_items_form_item_product {
     /* item_field */
     position: static;

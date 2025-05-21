@@ -1,9 +1,11 @@
 from wtforms import StringField, IntegerField, DecimalField, DateField, TextAreaField, Form, SelectField
 from wtforms.validators import DataRequired, Length, NumberRange, Optional
+from flask_wtf.file import FileField, FileAllowed, FileRequired, MultipleFileField
+from flask_wtf import FlaskForm
 
 from EDM.databae import get_counterparties
 
-class UtdDocumentForm(Form):
+class UtdDocumentForm(FlaskForm):
     number = StringField('Number', validators=[DataRequired(), Length(max=255)])
     counterparty = SelectField('Контрагент', validators=[DataRequired()])
     creator = IntegerField('Creator', validators=[DataRequired()])
@@ -17,6 +19,7 @@ class UtdDocumentForm(Form):
     sender_signature = IntegerField('Sender Signature')
     recipient_signature = IntegerField('Recipient Signature')
     date_of_receipt = DateField('Date of Receipt', format='%Y-%m-%d')
+    files = MultipleFileField('Выбери Файлы', validators=[FileRequired(), FileAllowed(['png', 'jpg', 'jpeg'], 'Only PNG, JPG, JPEG files are allowed!')])
     file_path = TextAreaField('File Path', validators=[Optional()])
 
     def __init__(self, *args, **kwargs):

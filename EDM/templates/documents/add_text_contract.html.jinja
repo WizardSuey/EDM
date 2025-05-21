@@ -2,12 +2,21 @@
 {% block title %}Add Text To Contract{% endblock %}
 
 {% block content %}
-    {{ ckeditor.load() }}
     <div class="contract_form_add_text">
-        <form class="contract_form_add_text_form" method="POST">
-            {{ form.text.label(class_="") }}
-            {{ form.text(class_="") }}
-            {{ form.submit(class_="") }}
+        <form class="contract_form_add_text_form" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ form.files.label(class_="contract_form_add_text_form_label") }}
+            {{ form.files(class_="contract_form_add_text_form_files") }}
+            {{ form.submit(class_="contract_form_add_text_form_submit") }}
         </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=auth_flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     </div>
 {% endblock %}

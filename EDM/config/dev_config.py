@@ -1,6 +1,10 @@
 SECRET_KEY = 'dev'
 TESTING = False
 
+UTD_DOCS_UPLOAD_FOLDER = 'EDM/static/utd_docs'
+CONTRACT_DOCS_UPLOAD_FOLDER = 'EDM/static/contract_docs'
+ALLOWED_EXTENSIONS = {'docx'}
+
 DATABASE_HOST = 'localhost'
 DATABASE_PORT = 5432
 DATABASE_USER = 'postgres'
