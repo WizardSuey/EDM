@@ -1,22 +1,22 @@
 <div class="navbar">
     <div class="navbar_elements_container">
         <div class="navbar_elements">
-            <a class="navbar_element_create" href="/">
+            <a class="navbar_element_create" href="{{ url_for('documents.create') }}" title="Создать Документ">
                 <img class="navbar_element_create_image" src="{{ url_for('static', filename='images/create.png') }}">
             </a>
-            <a class="navbar_element_upload">
+            <a class="navbar_element_upload" title="Загрузить документ">
                 <img class="navbar_element_upload_image" src="{{ url_for('static', filename='images/upload.png') }}">
             </a>
-            <a class="navbar_element_documentOut">
+            <a class="navbar_element_documentOut" href="{{ url_for('documents.outcoming') }}" title="Исходящие документы">
                 <img class="navbar_element_documentOut_image" src="{{ url_for('static', filename='images/document_out.png') }}">
             </a>
-            <a class="navbar_element_documentIn">
+            <a class="navbar_element_documentIn" title="Входящие документы">
                 <img class="navbar_element_documentIn_image" src="{{ url_for('static', filename='images/document_in.png') }}">
             </a>
-            <a class="navbar_element_counterparties">
+            <a class="navbar_element_counterparties" title="Контрагенты">
                 <img class="navbar_element_counterparties_image" src="{{ url_for('static', filename='images/counterparties.png') }}">
             </a>
-            <a class="navbar_element_support">
+            <a class="navbar_element_support" title="Помощь">
                 <img class="navbar_element_support_image" src="{{ url_for('static', filename='images/support.png') }}">
             </a>
         </div>

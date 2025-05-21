@@ -1,0 +1,429 @@
+.utd_form_add_items {
+    /* add_items_form */
+    position: static;
+    width: 100%;
+    /* height: 1000px; */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 100px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+
+    background: rgb(230, 230, 230);
+}
+
+.utd_form_add_items_doc_info {
+    /* document_info */
+    position: static;
+    width: 620px;
+    height: 37px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5;
+    padding: 10px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.utd_form_add_items_doc_info_item {
+    /* Frame 1 */
+    position: static;
+    width: 125px;
+    height: 17px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px;
+}
+
+.utd_form_add_items_doc_info_item_text {
+    /* УПД номер: */
+    position: static;
+    width: 92px;
+    height: 17px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    flex-grow: 0;
+    margin: 0px;
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: center;
+}
+
+.utd_form_add_items_form {
+    /* items_from */
+    position: static;
+    width: 100%;
+    /* max-height: 800px; */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.utd_form_add_items_form_text {
+    /* add_item_label */
+    position: static;
+    width: 163px;
+    height: 16px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.utd_form_add_items_form_labels {
+    /* items_from */
+    position: static;
+    width: 100%;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    overflow-y: auto;
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.utd_form_add_items_form_labels_product {
+    /* item_field */
+    position: static;
+    width: 460px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px;
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_labels_quantity {
+    /* item_price */
+    position: static;
+    width: 130px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 10px;
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_labels_price {
+    /* item_price */
+    position: static;
+    width: 130px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_labels_sum {
+    /* item_price */
+    position: static;
+    width: 330px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_item {
+    /* item */
+    position: static;
+    width: 600px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px;
+}
+
+.utd_form_add_items_form_item_product {
+    /* item_field */
+    position: static;
+    width: 460px;
+    height: 40px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px;
+
+    box-sizing: border-box;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    padding: 5px;
+
+    background: rgb(255, 255, 255);
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_item_quantity {
+    /* item_price */
+    position: static;
+    width: 130px;
+    height: 40px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 10px;
+    box-sizing: border-box;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    padding: 5px;
+
+    background: rgb(255, 255, 255);
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_item_price {
+    /* item_price */
+    position: static;
+    width: 130px;
+    height: 40px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    padding: 5px;
+
+    background: rgb(255, 255, 255);
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_item_sum {
+    /* item_price */
+    position: static;
+    width: 330px;
+    height: 40px;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    box-sizing: border-box;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 5px;
+    padding: 5px;
+
+    background: rgb(255, 255, 255);
+
+    color: rgb(0, 0, 0);
+    font-family: Sansation;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: left;
+    outline: none;
+}
+
+.utd_form_add_items_form_add_item_button {
+    /* add_item */
+    position: static;
+    width: 150px;
+    height: 45px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 0px;
+
+    border-radius: 10px;
+
+    background: rgb(46, 115, 69);
+
+    color: rgb(255, 255, 255);
+    font-family: Sansation;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: center;
+    border: none;
+}
+
+.utd_form_add_items_form_sign_button {
+    /* sign */
+    position: static;
+    width: 150px;
+    height: 45px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 0px 0px;
+
+    border-radius: 10px;
+
+    background: rgb(46, 115, 69);
+
+    color: rgb(255, 255, 255);
+    font-family: Sansation;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-align: center;
+    border: none;
+}

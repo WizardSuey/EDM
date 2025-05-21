@@ -55,20 +55,65 @@ def seed_db():
         print(f"{e}")
         raise e
 
+
 def current_user(user_id: int) -> tuple:
-    """ Получение текущего пользователя """
+    """ Получение полной информации о пользователе """
     db = get_db()
     cur = db.cursor()
     error = None
 
     try:
-        cur.execute("SELECT * FROM users WHERE id = %s", (user_id,))
+        cur.execute("""
+                SELECT 
+                    users.id,
+                    users.name,
+                    users.second_name,
+                    users.surname,
+                    users.date_of_birth,
+                    users.role,
+                    user_roles.name AS role_name,
+                    users.has_signature,
+                    users.add_employee,
+                    users.organization,
+                    counterparties.name AS organization_name,
+                    users.blocked,
+                    users.login,
+                    users.email,
+                    users.created_at,
+                    users.updated_at
+                FROM 
+                    users
+                JOIN 
+                    user_roles ON users.role = user_roles.id
+                JOIN 
+                    counterparties ON users.organization = counterparties.id
+                WHERE 
+                    users.id = %s""", (user_id,))
     except Exception as e:
         print(f"{e}")
 
     current_user = cur.fetchone()
 
     return current_user
+
+def get_counterparties() -> tuple:
+    db = get_db()
+    cur = db.cursor()
+    error = None
+
+    try:
+        cur.execute("""
+                SELECT 
+                    counterparties.id,
+                    counterparties.name
+                FROM 
+                    counterparties""")
+    except Exception as e:
+        print(f"{e}")
+
+    counterparties = cur.fetchall()
+
+    return counterparties
 
 @click.command('init-db')
 def init_db_command():

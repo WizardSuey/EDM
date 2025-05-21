@@ -1,0 +1,13 @@
+{% extends "base.html.jinja" %}
+{% block title %}Add Text To Contract{% endblock %}
+
+{% block content %}
+    {{ ckeditor.load() }}
+    <div class="contract_form_add_text">
+        <form class="contract_form_add_text_form" method="POST">
+            {{ form.text.label(class_="") }}
+            {{ form.text(class_="") }}
+            {{ form.submit(class_="") }}
+        </form>
+    </div>
+{% endblock %}

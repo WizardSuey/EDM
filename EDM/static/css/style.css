@@ -10,26 +10,27 @@ a {
 body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .content {
     /* content */
     position: fixed;
     width: 1790px;
-    height: 1000px;
+    max-height: 1000px;
     left: 130px;
     right: 0;
     top: 80px;
     bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
     /* Auto layout */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 20px;
-    padding-left: 30px;
-    background: rgb(242, 242, 242);
+    /* padding-left: 30px; */
+    background: rgb(230, 230, 230);
 }
 
 .dashboard {
@@ -37,6 +38,8 @@ body {
     position: static;
     width: 1745px;
     height: 779px;
+    margin-top: 20px;
+    margin-left: 20px;
     /* Auto layout */
     display: flex;
     flex-direction: column;
@@ -51,7 +54,7 @@ body {
     order: 0;
     flex-grow: 0;
 
-    background: rgb(242, 242, 242);
+    /* background: rgb(242, 242, 242); */
 }
 
 .dashboard_user {

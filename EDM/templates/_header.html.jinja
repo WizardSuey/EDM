@@ -9,10 +9,22 @@
         <div class="header_elements_user">
             <div class="user_username">
                 <p class="user_username_name_text">{{ user.name }}</p>
-                <p class="user_username_second_name_text">{{ user.second_name }}</p>
-                <p class="user_username_surname_text">{{ user.surname }}</p>
+                <p class="user_username_second_name_text">
+                    {% if user.second_name == "None" %}
+                        <p></p>
+                    {% else %}
+                        {{ user.second_name }}
+                    {% endif %}
+                </p>
+                <p class="user_username_surname_text">
+                    {% if user.surname == "None" %}
+                        <p></p>
+                    {% else %}
+                        {{ user.surname }}
+                    {% endif %}
+                </p>
             </div>
-            <a class="user_username_avatar" href="{{ url_for('auth.logout') }}">
+            <a class="user_username_avatar" href="{{ url_for('dashboard.index') }}">
                 <img class="user_username_avatar_img" src="{{ url_for('static', filename='images/default_user_avatar.jpg') }}">
             </a>
         </div>

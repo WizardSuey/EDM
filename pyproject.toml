@@ -8,10 +8,11 @@ description = "EDM"
 readme = "README.md"
 dependencies = [
     "flask",
-    "flask_socketio",
+    "flask-socketio",
     "flask-script",
     "psycopg2-binary",
     "Flask-WTF",
+    "flask-ckeditor",
 ]
 license = "MIT"
 license-files = ["LICENSE"]

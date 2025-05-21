@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS contract_documents CASCADE;
 DROP TABLE IF EXISTS document_statuses CASCADE;
 DROP TABLE IF EXISTS document_types CASCADE;
 DROP TABLE IF EXISTS counterparties CASCADE;
+DROP TABLE IF EXISTS utd_document_items CASCADE;
 
 CREATE TABLE user_roles (
     id SERIAL PRIMARY KEY,
@@ -59,19 +60,20 @@ CREATE TABLE document_statuses (
 -- УПД
 CREATE TABLE utd_documents (
     id SERIAL PRIMARY KEY,
-    number VARCHAR(255) NOT NULL,
-    creator INTEGER NOT NULL,
-    creator_counterparty INTEGER NOT NULL,
+    number VARCHAR(255) NOT NULL UNIQUE, -- Номер
+    counterparty INTEGER NOT NULL, -- Получатель документа
+    creator INTEGER NOT NULL, -- Создатель
+    creator_counterparty INTEGER NOT NULL, -- Отправитель
     consignee INTEGER NOT NULL, -- Грузополучатель
     provider INTEGER NOT NULL, -- Поставщик
     payer INTEGER NOT NULL, -- Плательщк
-    amount DECIMAL(15, 2), -- Changed to DECIMAL for monetary values
-    document_type INTEGER NOT NULL,
-    document_status INTEGER NOT NULL,
-    sender_signature INTEGER NOT NULL,
-    recipient_signature INTEGER NOT NULL,
-    date_of_receipt DATE NOT NULL,
-    file_path TEXT,
+    amount DECIMAL(15, 2), -- Сумма
+    document_type INTEGER NOT NULL, -- Тип документа
+    document_status INTEGER NOT NULL, -- Статус
+    sender_signature INTEGER DEFAULT NULL, -- Подпись отправителя
+    recipient_signature INTEGER DEFAULT NULL, -- Подпись получателя
+    date_of_receipt DATE DEFAULT NULL, -- Дата получения
+    file_path TEXT DEFAULT NULL, -- Путь к файлу
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE,
     FOREIGN KEY (creator) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -85,19 +87,39 @@ CREATE TABLE utd_documents (
     FOREIGN KEY (recipient_signature) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE utd_document_items (
+    id SERIAL PRIMARY KEY,
+    utd_document_id INTEGER NOT NULL,
+    product_name VARCHAR(255) NOT NULL,
+    product_quantity INTEGER NOT NULL,
+    product_price DECIMAL(100, 2) NOT NULL,
+    product_sum DECIMAL(100, 2) NOT NULL,
+    FOREIGN KEY (utd_document_id) REFERENCES utd_documents(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX idx_utd_document_items_utd_document_id ON utd_document_items(utd_document_id);
+
 -- Договора / Контракты
 CREATE TABLE contract_documents (
     id SERIAL PRIMARY KEY,
-    number VARCHAR(255) NOT NULL,
+    number VARCHAR(255) NOT NULL UNIQUE,
+    counterparty INTEGER NOT NULL, -- Получатель документа
     creator INTEGER NOT NULL,
     creator_counterparty INTEGER NOT NULL,
+    document_type INTEGER NOT NULL, -- Тип документа
+    document_status INTEGER NOT NULL, -- Статус
     provider INTEGER NOT NULL, -- поставщик
     provider_base TEXT NOT NULL, -- основание поставщика
     client INTEGER NOT NULL, -- заказщик
     client_base TEXT NOT NULL, -- основание заказщика
-    address VARCHAR(255) NOT NULL,
-    provider_signature INTEGER NOT NULL,
-    client_signature INTEGER NOT NULL,
+    address VARCHAR(255) NOT NULL, -- адрес получателя
+    text TEXT DEFAULT NULL, -- текст договора
+    provider_signature INTEGER DEFAULT NULL,
+    client_signature INTEGER DEFAULT NULL,
+    date_of_receipt DATE DEFAULT NULL, -- Дата получения
+    file_path TEXT DEFAULT NULL, -- Путь к файлу
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE,
     FOREIGN KEY (creator) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (creator_counterparty) REFERENCES counterparties(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (provider) REFERENCES counterparties(id) ON DELETE CASCADE ON UPDATE CASCADE,

@@ -1,0 +1,14 @@
+{% extends "base.html.jinja" %}
+{% block title %}Create Document{% endblock %}
+
+{% block content %}
+    <div class="create_document_select_type">
+        <div class="create_document_select_type_logo">
+            <p class="create_document_select_type_logo_text">Создать новый документ</p>
+        </div>
+        <form class="create_document_select_type_form" method="post">
+            {{ form.document_type(class_="create_document_select_type_form_select") }}
+            {{ form.submit(type_="submit", class_="create_document_select_type_form_submit") }}
+        </form>
+    </div>
+{% endblock %}

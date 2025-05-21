@@ -8,22 +8,40 @@
                 <img class="dashboard_user_avatar" src="{{ url_for('static', filename='images/default_user_avatar.jpg') }}">
             </div>
             <p class="dashboard_user_name">{{ user.name }}</p>
-            <p class="dashboard_user_secondName">{{ user.second_name }}</p>
-            <p class="dashboard_user_surname">{{ user.surname }}</p>
+            <p class="dashboard_user_secondName">
+                {% if user.second_name == "None" %}
+                    <p></p>
+                {% else %}
+                    {{ user.second_name }}
+                {% endif %}
+            </p>
+            <p class="dashboard_user_surname">
+                {% if user.surname == "None" %}
+                    <p></p>
+                {% else %}
+                    {{ user.surname }}
+                {% endif %}
+            </p>
         </div>
         <div class="dashboard_userContent">
             <div class="dashboard_userInfo">
                 <div class="dashboard_userInfo_organization">
                     <p class="dashboard_userInfo_organization_text1">Организация:</p>
-                    <p class="dashboard_userInfo_organization_text2">{{ user.organization }}</p>
+                    <p class="dashboard_userInfo_organization_text2">{{ user.organization_name }}</p>
                 </div>
                 <div class="dashboard_userInfo_role">
                     <p class="dashboard_userInfo_role_text1">Должность:</p>
-                    <p class="dashboard_userInfo_role_text2">{{ user.role }}</p>
+                    <p class="dashboard_userInfo_role_text2">{{ user.role_name }}</p>
                 </div>
                 <div class="dashboard_userInfo_permission">
                     <p class="dashboard_userInfo_permission_text1">Ставить ПЭП:</p>
-                    <p class="dashboard_userInfo_permission_text2">{{ user.has_signature }}</p>
+                    <p class="dashboard_userInfo_permission_text2">
+                    {% if user.has_signature %}
+                        Да
+                    {% else %}
+                        Нет
+                    {% endif %}
+                    </p>
                 </div>
                 <div class="dashboard_userInfo_addEmployee">
                     <a class="dashboard_userInfo_addEmployee_button">Добавить сотрудника</a>

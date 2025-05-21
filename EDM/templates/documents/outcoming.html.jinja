@@ -1,0 +1,28 @@
+{% extends "base.html.jinja" %}
+{% block title %}Outcoming Documents{% endblock %}
+
+{% block content %}
+    <div class="outcoming_documents_box">
+        {% for document in documents %}
+            <div class="outcoming_document">
+                <div class="outcoming_document_number">
+                    <p class="outcoming_document_number_type">{{ document.document_type_name }}</p>
+                    <p class="outcoming_document_number_text">Номер:</p>
+                    <p class="outcoming_document_number_number">{{ document.number }}</p>
+                </div>
+                <div class="outcoming_document_counterparty">
+                    <p class="outcoming_document_counterparty_text">Кому:</p>
+                    <p class="outcoming_document_counterparty_counterparty">{{ document.counterparty_name }}</p>
+                </div>
+                <div class="outcoming_document_status">
+                    <p class="outcoming_document_status_text">Статус:</p>
+                    <p class="outcoming_document_status_status">{{ document.document_status_name }}</p>
+                </div>
+                <div class="outcoming_document_buttons">
+                    <a class="outcoming_document_buttons_view">Просмотр</a>
+                    <a class="outcoming_document_buttons_edit">Редактировать</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

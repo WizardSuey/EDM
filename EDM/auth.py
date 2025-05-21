@@ -8,7 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from EDM.login_form import LoginForm
 
-from EDM.databae import get_db
+from EDM.databae import get_db, current_user
 
 bp = Blueprint('auth', __name__, url_prefix='/auth', template_folder='templates')
 

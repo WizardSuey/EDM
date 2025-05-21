@@ -1,0 +1,80 @@
+{% extends "base.html.jinja" %}
+{% block title %}Add Items To UTD{% endblock %}
+
+{% block content %}
+    <div class="utd_form_add_items">
+        <div class="utd_form_add_items_doc_info">
+            <div class="utd_form_add_items_doc_info_item">
+                <p class="utd_form_add_items_doc_info_item_text">УПД номер: </p>
+                <p class="utd_form_add_items_doc_info_item_text"> 123</p>
+            </div>
+        </div>
+        <form class="utd_form_add_items_form" method="POST">
+            <p class="utd_form_add_items_form_text">Добавление предметов</p>
+            <div class="utd_form_add_items_form_labels">
+                <p class="utd_form_add_items_form_labels_product">Продукт</p>
+                <p class="utd_form_add_items_form_labels_quantity">Кол-во</p>
+                <p class="utd_form_add_items_form_labels_price">Цена за шт.</p>
+                <p class="utd_form_add_items_form_labels_sum">Сумма</p>
+            </div>
+            <div class="utd_form_add_items_form_item">
+                {{ form.product_name(class_="utd_form_add_items_form_item_product") }}
+                {{ form.product_quantity(class_="utd_form_add_items_form_item_quantity") }}
+                {{ form.product_price(class_="utd_form_add_items_form_item_price", pattern="^\d+(\.\d{2})?$") }}
+                {{ form.product_sum(class_="utd_form_add_items_form_item_sum", readonly=True) }}
+            </div>
+            <input type="button" id="add-item" value="Добавить предмет" class="utd_form_add_items_form_add_item_button">
+            {{ form.submit(class_="utd_form_add_items_form_sign_button", value="Подписать") }}
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=auth_flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        function calculateSum(row) {
+            const quantity = row.querySelector('.utd_form_add_items_form_item_quantity').value;
+            const price = row.querySelector('.utd_form_add_items_form_item_price').value;
+            const sumField = row.querySelector('.utd_form_add_items_form_item_sum');
+            const sum = parseFloat(quantity) * parseFloat(price);
+            sumField.value = isNaN(sum) ? '' : sum.toFixed(2);
+        }
+
+        document.getElementById('add-item').addEventListener('click', function() {
+            const container = document.getElementsByClassName('utd_form_add_items_form')[0];
+            const newItemRow = document.createElement('div');
+            newItemRow.className = 'utd_form_add_items_form_item';
+            newItemRow.innerHTML = `
+                <input type="text" name="product_name" class="utd_form_add_items_form_item_product">
+                <input type="text" name="product_quantity" class="utd_form_add_items_form_item_quantity">
+                <input type="text" name="product_price" class="utd_form_add_items_form_item_price" pattern="^\\d+(\\.\\d{2})?$">
+                <input type="text" name="product_sum" class="utd_form_add_items_form_item_sum" readonly>
+            `;
+            container.appendChild(newItemRow);
+
+            // Add event listeners to new inputs
+            newItemRow.querySelector('.utd_form_add_items_form_item_quantity').addEventListener('input', function() {
+                calculateSum(newItemRow);
+            });
+            newItemRow.querySelector('.utd_form_add_items_form_item_price').addEventListener('input', function() {
+                calculateSum(newItemRow);
+            });
+        });
+
+        // Add event listeners to existing inputs
+        document.querySelectorAll('.utd_form_add_items_form_item').forEach(row => {
+            row.querySelector('.utd_form_add_items_form_item_quantity').addEventListener('input', function() {
+                calculateSum(row);
+            });
+            row.querySelector('.utd_form_add_items_form_item_price').addEventListener('input', function() {
+                calculateSum(row);
+            });
+        });
+    </script>
+{% endblock %}
