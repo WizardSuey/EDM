@@ -4,6 +4,9 @@ from flask_socketio import SocketIO
 import os
 import logging
 
+logger = logging.getLogger('waitress')
+logger.setLevel(logging.INFO)
+
 # logger = logging.getLogger(__name__)
 # logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
