@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from werkzeug.utils import secure_filename
 from flask_socketio import SocketIO
 from flask_ckeditor import CKEditor
@@ -42,5 +42,8 @@ def create_app(config: str = 'dev'):
 
     from . import documents
     app.register_blueprint(documents.bp)
+
+    from . import counterparties
+    app.register_blueprint(counterparties.bp)
 
     return app

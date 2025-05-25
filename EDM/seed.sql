@@ -1,5 +1,11 @@
-INSERT INTO user_roles (name, description)
-VALUES ('admin', 'Роль администратора предназначена для пользователей, которые имеют полный доступ к системе. Администраторы могут управлять учетными записями пользователей, настраивать настройки системы и контролировать все операции в приложении. Эта роль обычно назначается доверенному персоналу, который несет ответственность за поддержание целостности и безопасности системы.');
+INSERT INTO user_roles (id, name, description)
+VALUES 
+(1, 'Администратор', 'Роль администратора предназначена для пользователей, которые имеют полный доступ к системе. Администраторы могут управлять учетными записями пользователей, настраивать настройки системы и контролировать все операции в приложении. Эта роль обычно назначается доверенному персоналу, который несет ответственность за поддержание целостности и безопасности системы.'),
+(2, 'Бухгалтер', 'Роль бухгалтера предназначена для пользователей, которые отвечают за управление документами в компании. Они могут создавать и подписывать документы.'),
+(3, 'Контрагент', 'Роль контрагента предназначена для пользователей, которые представляют внешние организации или партнеров. Контрагенты взаимодействуют с системой для получения и отправки документов, а также для участия в согласовании и подписании контрактов.'),
+(4 ,'Кустовой директор', 'Роль кустового директора предназначена для пользователей, которые отвечают за управление и координацию деятельности нескольких подразделений или филиалов компании'),
+(99999, 'Registered user', 'Registered user');
+
 
 INSERT INTO document_types (name, description)
 VALUES 
@@ -17,19 +23,15 @@ VALUES
 ('Отклонён', 'Документ отклонён одной из сторон, возможно, с указанием причин.'),
 ('Архивирован', 'Документ завершил свой жизненный цикл и перемещён в архив для хранения.');
 
-INSERT INTO counterparties (name, tin, email, phone_number, address, created_at, updated_at)
+INSERT INTO counterparties (id, name, tin, email, phone_number, address, created_at, updated_at)
 VALUES 
-('UniversamBand', '0000000000', 'dorogino@gmail.com', '86666666666', 'Луна 6 бизнес колония', NOW(), NOW()),
-('TechCorp', '1111111111', 'techcorp@example.com', '80000000001', '123 Tech Street', NOW(), NOW()),
-('GreenEnergy', '2222222222', 'greenenergy@example.com', '80000000002', '456 Solar Ave', NOW(), NOW()),
-('Foodies', '3333333333', 'foodies@example.com', '80000000003', '789 Culinary Blvd', NOW(), NOW()),
-('HealthPlus', '4444444444', 'healthplus@example.com', '80000000004', '101 Wellness Way', NOW(), NOW()),
-('EduWorld', '5555555555', 'eduworld@example.com', '80000000005', '202 Learning Lane', NOW(), NOW()),
-('AutoDrive', '6666666666', 'autodrive@example.com', '80000000006', '303 Motorway', NOW(), NOW()),
-('FashionHub', '7777777777', 'fashionhub@example.com', '80000000007', '404 Style St', NOW(), NOW()),
-('AquaLife', '8888888888', 'aqualife@example.com', '80000000008', '505 Ocean Drive', NOW(), NOW()),
-('BuildIt', '9999999999', 'buildit@example.com', '80000000009', '606 Construct Ct', NOW(), NOW()),
-('TravelSphere', '1010101010', 'travelsphere@example.com', '80000000010', '707 Journey Rd', NOW(), NOW());
+(1, 'ErgoDocs', '0000000000', 'dorogino@gmail.com', '88006403075', '074474, Ульяновская область, город Серпухов, спуск Бухарестская, 01', NOW(), NOW()),
+(2, 'TechCorp', '1111111111', 'techcorp@example.com', '88008833814', '009823, Калининградская область, город Орехово-Зуево, проезд Гоголя, 37', NOW(), NOW()),
+(3, 'GreenEnergy', '2222222222', 'greenenergy@example.com', '84950099727', '614351, Магаданская область, город Солнечногорск, шоссе 1905 года, 85', NOW(), NOW()),
+(4, 'Foodies', '3333333333', 'foodies@example.com', '88121665105', '848582, Челябинская область, город Орехово-Зуево, пл. Балканская, 80', NOW(), NOW()),
+(99999, 'Reg', '0000000012', 'dorogino@gmail.com', '0000000000', 'None', NOW(), NOW());
 
-INSERT INTO users (name, second_name, surname, date_of_birth, role, has_signature, add_employee, organization, blocked, login, email, password_digest, created_at, updated_at)
-VALUES ('Flea', 'None', 'None', '1765-12-12', 1, TRUE, TRUE, 1, FALSE, 'admin', 'dorogino@gmail.com', 'scrypt:32768:8:1$VrAjHvnSWYpBVXio$c5cba30b97a7fa8addfc1dc9865119b4eaed98c68f2e9b9c573733d3e24256258cab222fefac2fa6ddf4b549281a8ca24f85f7166b25a79d46be6e3efb1e8363', NOW(), NOW());
+INSERT INTO users (name, second_name, surname, date_of_birth, role, has_signature, add_employee, organization, blocked, login, email, send_tin, password_digest, created_at, updated_at)
+VALUES 
+('Виктор', 'Зачев', 'Альбертович', '1765-12-12', 1, TRUE, TRUE, 1, FALSE, 'admin', 'dorogino@gmail.com', TRUE, 'scrypt:32768:8:1$VrAjHvnSWYpBVXio$c5cba30b97a7fa8addfc1dc9865119b4eaed98c68f2e9b9c573733d3e24256258cab222fefac2fa6ddf4b549281a8ca24f85f7166b25a79d46be6e3efb1e8363', NOW(), NOW()),
+('Иван', 'Иванов', 'Иванович', '1990-01-23', 2, TRUE, FALSE, 4, FALSE, 'ivanIvan', 'ivan@gmail.com', TRUE, 'scrypt:32768:8:1$qbUuqkZ3fBeuHF9V$df1eafa98e189b455365c1d42b5884d5ca672652687775cd51d94b320444ba1590bfb88a5ecdb0c6f87b1af128093b785a7288ab6fa023149c80063895022599', NOW(), NOW());

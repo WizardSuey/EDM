@@ -6,10 +6,20 @@
         <div class="utd_form_add_items_doc_info">
             <div class="utd_form_add_items_doc_info_item">
                 <p class="utd_form_add_items_doc_info_item_text">УПД номер: </p>
-                <p class="utd_form_add_items_doc_info_item_text"> 123</p>
+                <p class="utd_form_add_items_doc_info_item_text"> {{ document_number }}</p>
             </div>
         </div>
-        <form class="utd_form_add_items_form" method="POST">
+        {% if document_items != None %}
+            {% for item in document_items %}
+                <div class="view_utd_box_element col bor">
+                    <p class="view_utd_box_element_label">Номенклатура: {{ item.product_name }}</p>
+                    <p class="view_utd_box_element_label">Количество: {{ item.product_quantity }}</p>
+                    <p class="view_utd_box_element_label">Итоговая сумма: {{ item.product_sum }}Р</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <form class="utd_form_add_items_form" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
             <p class="utd_form_add_items_form_text">Добавление предметов</p>
             <div class="utd_form_add_items_form_labels">
                 <p class="utd_form_add_items_form_labels_product">Продукт</p>

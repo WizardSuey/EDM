@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Login Page</title>
+</head>
+<body>
+        <div class="register_container">
+            <div class="register_text_container">
+                <p class="register_text_main">ErgoDocs</p>
+                <p class="register_subtext">Регистрация</p>
+            </div>
+            <hr class="register_container_line">
+            {% from "_formhelpers.html.jinja" import render_field %}
+            <form class="register_login_form" method="post">  
+                <div class="register_login_form_login">
+                    {{ form.name.label(class_="register_login_form_login_label") }}
+                    {{ render_field(form.name, class="register_login_form_login_input", align="center") }}
+                </div>
+                <div class="register_login_form_login">
+                    {{ form.second_name.label(class_="register_login_form_login_label") }}
+                    {{ render_field(form.second_name, class="register_login_form_login_input", align="center") }}
+                </div>
+                <div class="register_login_form_login">
+                    {{ form.surname.label(class_="register_login_form_login_label") }}
+                    {{ render_field(form.surname, class="register_login_form_login_input", align="center") }}
+                </div>  
+                <div class="register_login_form_login">
+                    {{ form.date_of_birth.label(class_="register_login_form_login_label") }}
+                    {{ render_field(form.date_of_birth, class="register_login_form_login_input", align="center") }}
+                </div>
+                <div class="register_login_form_login">
+                    {{ form.login.label(class_="register_login_form_login_label") }}
+                    {{ render_field(form.login, class="register_login_form_login_input", align="center") }}
+                </div> 
+                <div class="register_login_form_login">
+                    {{ form.email.label(class_="register_login_form_login_label") }}
+                    {{ render_field(form.email, class="register_login_form_login_input", align="center") }}
+                </div>
+                <div class="register_login_form_password">
+                    {{ form.password.label(class_="register_login_form_password_label") }}
+                    {{ render_field(form.password, class="register_login_form_password_input", align="center") }}
+                </div>
+                <div class="register_login_form_buttons">
+                    {{ form.submit(class_="auth_login_form_register_link") }}
+                </div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=register_flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+</body>
+</html>

@@ -23,19 +23,18 @@ ul {
 }
 
 
-.auth_container {
-    /* auth_container */
+.register_container {
+    /* register_container */
     position: static;
     min-width: 300px;
     width: 450px;
-    height: 500px;
+    height: 600px;
     /* Auto layout */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding: 20px 0px 0px 0px;
 
     /* Inside Auto Layout */
     flex: none;
@@ -47,8 +46,8 @@ ul {
     background: rgb(255, 255, 255);
 }
 
-.auth_text_container {
-    /* auth_text_container */
+.register_text_container {
+    /* register_text_container */
     position: static;
     width: 118px;
     height: 55px;
@@ -68,8 +67,8 @@ ul {
     /* background: rgb(255, 255, 255); */
 }
 
-.auth_text_main {
-    /* auth_text_main */
+.register_text_main {
+    /* register_text_main */
     position: static;
     width: 118px;
     height: 39px;
@@ -95,8 +94,8 @@ ul {
 text-align: center;
 }
 
-.auth_subtext {
-    /* auth_subtext */
+.register_subtext {
+    /* register_subtext */
     position: static;
     width: 41px;
     height: 16px;
@@ -122,8 +121,8 @@ text-align: center;
     text-align: center;
 }
 
-.auth_container_line {
-    /* auth_container_line */
+.register_container_line {
+    /* register_container_line */
     position: static;
     width: 290px;
     height: 0;
@@ -135,17 +134,16 @@ text-align: center;
     border: 1px solid rgb(228, 227, 227);
 }
 
-.auth_login_form {
-    /* auth_login_form */
+.register_login_form {
+    /* register_login_form */
     position: static;
     width: 350px;
-    height: 400px;
     /* Auto layout */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 45px;
+    gap: 15px;
     padding: 0px;
 
 
@@ -157,8 +155,8 @@ text-align: center;
     /* background: rgb(255, 255, 255); */
 }
 
-.auth_login_form_login {
-   /* auth_login_form_login */
+.register_login_form_login {
+   /* register_login_form_login */
     position: static;
     width: 350px;
     height: 48px;
@@ -177,10 +175,9 @@ text-align: center;
     flex-grow: 0;
 }
 
-.auth_login_form_login_label {
-    /* auth_login_form_login_label */
+.register_login_form_login_label {
+    /* register_login_form_login_label */
     position: static;
-    width: 36px;
     height: 13px;
     /* Auto layout */
     /* display: flex; */
@@ -205,8 +202,8 @@ text-align: center;
     text-align: center;
 }
 
-.auth_login_form_login_input {
-    /* auth_login_form_login_input */
+.register_login_form_login_input {
+    /* register_login_form_login_input */
     position: static;
     width: 350px;
     height: 35px;
@@ -230,8 +227,8 @@ text-align: center;
     text-align: start;
 }
 
-.auth_login_form_password {
-    /* auth_login_form_password */
+.register_login_form_password {
+    /* register_login_form_password */
     position: static;
     width: 350px;
     height: 48px;
@@ -250,8 +247,8 @@ text-align: center;
     flex-grow: 0;
 }
 
-.auth_login_form_password_label {
-    /* auth_login_form_password_label */
+.register_login_form_password_label {
+    /* register_login_form_password_label */
     position: static;
     width: 36px;
     height: 13px;
@@ -278,8 +275,8 @@ text-align: center;
     text-align: center;
 }
 
-.auth_login_form_password_input {
-    /* auth_login_form_password_input */
+.register_login_form_password_input {
+    /* register_login_form_password_input */
     position: static;
     width: 350px;
     height: 35px;
@@ -303,7 +300,7 @@ text-align: center;
     text-align:start;
 }
 
-.auth_login_form_buttons {
+.register_login_form_buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -312,8 +309,8 @@ text-align: center;
     order: 3;
 }
 
-.auth_login_form_submit {
-    /* auth_login_form_submit */
+.register_login_form_submit {
+    /* register_login_form_submit */
     position: static;
     width: 350px;
     height: 45px;
@@ -346,8 +343,8 @@ text-align: center;
     border: none;
 }
 
-.auth_flashes {
-    /* auth_flashes */
+.register_flashes {
+    /* register_flashes */
     position: static;
     width: 100%;
     height: 30px;
@@ -371,7 +368,7 @@ text-align: center;
     border: 1px solid rgb(212, 212, 212);
 }
 
-.auth_login_form_register_link {
+.register_login_form_register_link {
     position: static;
     width: 350px;
     height: 45px;

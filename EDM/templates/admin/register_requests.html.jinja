@@ -1,0 +1,33 @@
+{% extends "base.html.jinja" %}
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+    <div class="register_requests_container">
+        {# <div class="register_requests_container_items"> #}
+        {% if register_requests %}
+            {% for register_request in register_requests %}
+                {% if not register_request.completed %}
+                    <div class="register_request">
+                        <p class="register_request_label">{{ register_request.created_at }}</p>
+                        {% if not register_request.completed %}
+                            <p class="register_request_label">Заявка не решена</p>
+                        {% endif %}
+                        <div class="register_request_label_box">
+                            <p class="register_request_label">{{ register_request.user_second_name }}</p>
+                            <p class="register_request_label">{{ register_request.user_name }}</p>
+                            <p class="register_request_label">{{ register_request.user_surname }}</p>
+                        </div>
+                        <div class="register_request_label_box">
+                            <p class="register_request_label">Заявка на:</p>
+                            <p class="register_request_label">{{ register_request.org_name }}</p>
+                            <p class="register_request_label">ИНН:</p>
+                            <p class="register_request_label">{{ register_request.tin }}</p>
+                        </div>
+                        <a class="register_request_submit" href="{{ url_for('admin.submit_register_request', req_id=register_request.id) }}">Подтвердить</a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        {# </div> #}
+    </div>
+{% endblock %}

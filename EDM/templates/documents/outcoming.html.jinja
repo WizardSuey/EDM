@@ -19,8 +19,23 @@
                     <p class="outcoming_document_status_status">{{ document.document_status_name }}</p>
                 </div>
                 <div class="outcoming_document_buttons">
-                    <a class="outcoming_document_buttons_view">Просмотр</a>
-                    <a class="outcoming_document_buttons_edit">Редактировать</a>
+                    <a class="outcoming_document_buttons_view" href="
+                    {% if document.document_type == 1 %}
+                        {{ url_for('documents.view_utd', document_id=document.id) }}
+                    {% elif document.document_type == 2 %}
+                        {{ url_for('documents.view_contract', document_id=document.id) }}
+                    {% endif %}
+                    ">Просмотр</a>
+                    {% if (document.document_status == 1 or document.document_status == 2)  %}
+                        {% if document.document_type == 1 %}
+                            <a class="outcoming_document_buttons_edit" href="{{ url_for('documents.edit_utd', document_id=document.id) }}">Редактировать</a>
+                        {% elif document.document_type == 2 %}
+                            <a class="outcoming_document_buttons_edit" href="{{ url_for('documents.edit_contract', document_id=document.id) }}">Редактировать</a>
+                        {% endif %}
+                    {% endif %}
+                    {% if (document.document_status == 1 or document.document_status == 2) and document.document_type == 1 %}
+                        <a class="outcoming_document_buttons_add" href="{{ url_for('documents.utd_add_items', document_id=document.id) }}">Добавить предметы</a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

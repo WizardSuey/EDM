@@ -1,0 +1,26 @@
+{% extends "base.html.jinja" %}
+{% block title %}Getting start{% endblock %}
+
+{% block content %}
+    <div class="getting_start_container">
+        <form class="getting_start_container_form" enctype="multipart/form-data" method="post">
+            {{ form.hidden_tag() }}
+            {% if not user.send_tin %}
+                <p class="getting_start_container_form_label">Введите ИНН организации в которой вы работаете</p>
+                {{ form.tin(class_="getting_start_container_form_field") }}
+                {{ form.submit(class_="getting_start_container_form_submit") }}
+            {% else %}
+                <p class="getting_start_container_form_label">Ожидайте поддтверждения регистрации</p>
+            {% endif %}
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=register_flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+{% endblock %}

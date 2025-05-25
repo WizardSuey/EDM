@@ -1,0 +1,100 @@
+{% extends "base.html.jinja" %}
+{% block title %}Edit UTD{% endblock %}
+
+{% block content %}
+    <div class="view_utd_box">
+        <form method="POST" class="view_utd_box_items" enctype="multipart/form-data">
+            {{ main_form.hidden_tag() }}
+            
+            <div class="view_utd_box_element">
+                <label class="view_utd_box_element_label">УПД Номер:</label>
+                <span class="view_utd_box_element_label">{{ document.number }}</span>
+            </div>
+            
+            <div class="view_utd_box_element">
+                {{ main_form.counterparty.label(class_="view_utd_box_element_label") }}
+                {{ main_form.counterparty(class="view_utd_box_element_field") }}
+            </div>
+            
+            <div class="view_utd_box_element">
+                {{ main_form.consignee.label(class_="view_utd_box_element_label") }}
+                {{ main_form.consignee(class="view_utd_box_element_field") }}
+            </div>
+            
+            <div class="view_utd_box_element">
+                {{ main_form.provider.label(class_="view_utd_box_element_label") }}
+                {{ main_form.provider(class="view_utd_box_element_field") }}
+            </div>
+            
+            <div class="view_utd_box_element">
+                {{ main_form.payer.label(class_="view_utd_box_element_label") }}
+                {{ main_form.payer(class="view_utd_box_element_field") }}
+            </div>
+            
+            <div class="view_utd_box_element">
+                <label class="view_utd_box_element_label">Статус:</label>
+                <span class="view_utd_box_element_label">{{ document.document_status_name }}</span>
+            </div>
+            
+            <div class="view_utd_box_element">
+                <label class="view_utd_box_element_label">Подпись Отправителя:</label>
+                <span class="view_utd_box_element_label">
+                    {% if document.sender_signature_name %}
+                        {{ document.sender_signature_second_name }}
+                        {{ document.sender_signature_name }}
+                        {{ document.sender_signature_surname }}
+                    {% else %}
+                        Не подписан
+                    {% endif %}
+                </span>
+            </div>
+            
+            <div class="view_utd_box_element">
+                <label class="view_utd_box_element_label">Подпись Контрагента:</label>
+                <span class="view_utd_box_element_label">
+                    {% if document.recipient_signature_name %}
+                        {{ document.recipient_signature_second_name }}
+                        {{ document.recipient_signature_name }}
+                        {{ document.recipient_signature_surname }}
+                    {% else %}
+                        Не подписан
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="view_utd_box_element">
+                <label class="view_utd_box_element_label">Дата Принятия:</label>
+                <span class="view_utd_box_element_label">
+                    {% if document.date_of_receipt %}
+                        {{ document.date_of_receipt }}
+                    {% else %}
+                        Документ ещё не принят контрагентом
+                    {% endif %}
+                </span>
+            </div>
+            
+            {% if document_files %}
+                {% for file in document_files %}
+                    <img class="view_utd_box_element" src="{{ url_for('static', filename='utd_docs/' ~ document.id ~ '/' ~ file) }}" alt="Document Image">
+                {% endfor %}
+            {% endif %}
+            
+            <div class="view_utd_box_element">
+                {{ main_form.files.label(class_="view_utd_box_element_label") }}
+                {{ main_form.files }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="auth_flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+{% endblock %}

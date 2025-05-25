@@ -7,7 +7,8 @@
         <p class="create_contract_box_text_box_text_main">Создать новый документ</p>
         <p class="create_contract_box_text_box_text_sub">Контракт</p>
     </div>
-    <form class="create_contract_box_form" method="post">
+    <form class="create_contract_box_form" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
         <div class="create_contract_box_form_element">
             {{ form.counterparty.label(class_="create_contract_box_form_element_label") }} 
             {{ form.counterparty(class_="create_contract_box_form_element_field") }}
@@ -35,6 +36,10 @@
         <div class="create_contract_box_form_element">
             <p class="create_contract_box_form_element_label">Дата Создания:</p>
             <p class="create_contract_box_form_element_label">{{ current_date }}</p>
+        </div>
+        <div class="create_contract_box_form_element">
+            {{ form.files.label(class_="create_contract_box_form_element_label") }}
+            {{ form.files }}
         </div>
         <input type="submit" value="Создать" class="create_contract_box_form_submit">
         {% with messages = get_flashed_messages() %}

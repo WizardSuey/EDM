@@ -1,4 +1,4 @@
-.outcoming_documents_box {
+.incoming_documents_box {
     /* documents */
     position: static;
     width: 100%;
@@ -19,7 +19,7 @@
     background: rgb(230, 230, 230);
 }
 
-.outcoming_document {
+.incoming_document {
     /* Frame 1 */
     position: static;
     width: 100%;
@@ -44,10 +44,10 @@
     background: rgb(255, 255, 255);
 }
 
-.outcoming_document_number,
-.outcoming_document_counterparty,
-.outcoming_document_status,
-.outcoming_document_buttons {
+.incoming_document_number,
+.incoming_document_counterparty,
+.incoming_document_status,
+.incoming_document_buttons {
     /* Frame 2 */
     position: static;
     width: 100%;
@@ -68,13 +68,13 @@
     margin: 0px;
 }
 
-.outcoming_document_number_type,
-.outcoming_document_number_text,
-.outcoming_document_number_number,
-.outcoming_document_counterparty_text,
-.outcoming_document_counterparty_counterparty,
-.outcoming_document_status_text,
-.outcoming_document_status_status {
+.incoming_document_number_type,
+.incoming_document_number_text,
+.incoming_document_number_number,
+.incoming_document_counterparty_text,
+.incoming_document_counterparty_counterparty,
+.incoming_document_status_text,
+.incoming_document_status_status {
     /* УПД */
     position: static;
     height: 37px;
@@ -102,7 +102,7 @@
     text-align: left;
 }
 
-.outcoming_document_buttons_view {
+.incoming_document_buttons_view {
     /* Frame 4 */
     position: static;
     width: 100px;
@@ -136,7 +136,7 @@
     text-align: left;
 }
 
-.outcoming_document_buttons_edit {
+.incoming_document_buttons_edit {
     /* Frame 5 */
     position: static;
     width: 150px;
@@ -170,36 +170,3 @@
     text-align: left;
 }
 
-.outcoming_document_buttons_add {
-    /* Frame 5 */
-    position: static;
-    width: 200px;
-    height: 30px;
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-
-
-    /* Inside Auto Layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    margin: 0px;
-
-    border-radius: 5px;
-
-    background: rgb(46, 115, 69);
-
-    border: none;
-
-    color: rgb(255, 255, 255);
-    font-family: Sansation;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0px;
-    text-align: left;
-}

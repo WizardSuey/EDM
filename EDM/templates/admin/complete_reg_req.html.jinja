@@ -1,0 +1,15 @@
+{% extends "base.html.jinja" %}
+{% block title %}Add User role{% endblock %}
+
+{% block content %}
+    <div class="create_document_select_type">
+        <div class="create_document_select_type_logo">
+            <p class="create_document_select_type_logo_text">Подтверждение заявки на регистрацию</p>
+        </div>
+        <form class="create_document_select_type_form" method="post">
+            <h3>{{ form.role.label }}</h3>
+            {{ form.role(class_="create_document_select_type_form_select") }}
+            {{ form.submit(type_="submit", class_="create_document_select_type_form_submit") }}
+        </form>
+    </div>
+{% endblock %}

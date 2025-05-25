@@ -1,4 +1,5 @@
 from EDM import create_app, socketio
+from flask import session
 
 if __name__ == '__main__':
     app = create_app()

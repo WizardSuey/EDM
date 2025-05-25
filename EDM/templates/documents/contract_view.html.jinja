@@ -1,11 +1,11 @@
 {% extends "base.html.jinja" %}
-{% block title %}View UTD{% endblock %}
+{% block title %}Contract UTD{% endblock %}
 
 {% block content %}
     <div class="view_utd_box">
         <div class="view_utd_box_items">
             <div class="view_utd_box_element">
-                <p class="view_utd_box_element_label">УПД Номер:</p>
+                <p class="view_utd_box_element_label">Контракт Номер:</p>
                 <p class="view_utd_box_element_label">{{ document.number }}</p>
             </div>
             <div class="view_utd_box_element">
@@ -19,20 +19,20 @@
                 <p class="view_utd_box_element_label">{{ document.creator_counterparty_name }}</p>
             </div>
             <div class="view_utd_box_element">
-                <p class="view_utd_box_element_label">Грузополучатель:</p>
-                <p class="view_utd_box_element_label">{{ document.consignee_name }}</p>
+                <p class="view_utd_box_element_label">Заказчик:</p>
+                <p class="view_utd_box_element_label">{{ document.client_name }}</p>
+            </div>
+            <div class="view_utd_box_element box">
+                <p class="view_utd_box_element_label">Основание Заказчика:</p>
+                <p class="view_utd_box_element_label base">{{ document.client_base }}</p>
             </div>
             <div class="view_utd_box_element">
                 <p class="view_utd_box_element_label">Поставщик:</p>
                 <p class="view_utd_box_element_label">{{ document.provider_name }}</p>
             </div>
-            <div class="view_utd_box_element">
-                <p class="view_utd_box_element_label">Плательщик:</p>
-                <p class="view_utd_box_element_label">{{ document.payer_name }}</p>
-            </div>
-            <div class="view_utd_box_element">
-                <p class="view_utd_box_element_label">Сумма:</p>
-                <p class="view_utd_box_element_label">{{ document.amount }}Р</p>
+            <div class="view_utd_box_element box">
+                <p class="view_utd_box_element_label">Основание Поставщика:</p>
+                <p class="view_utd_box_element_label base">{{ document.provider_base }}</p>
             </div>
             <div class="view_utd_box_element">
                 <p class="view_utd_box_element_label">Статус:</p>
@@ -40,24 +40,28 @@
             </div>
             <div class="view_utd_box_element">
                 <p class="view_utd_box_element_label">Подпись Отправителя:</p>
-                <p class="view_utd_box_element_label">{{ document.sender_signature_second_name }}</p>
-                <p class="view_utd_box_element_label">{{ document.sender_signature_name }}</p>
-                <p class="view_utd_box_element_label">{{ document.sender_signature_surname }}</p>
+                {% if document.client_signature_name == None %}
+                    <p class="view_utd_box_element_label">Не подписан</p>
+                {% else %}
+                    <p class="view_utd_box_element_label">{{ document.client_signature_second_name }}</p>
+                    <p class="view_utd_box_element_label">{{ document.client_signature_name }}</p>
+                    <p class="view_utd_box_element_label">{{ document.client_signature_surname }}</p>
+                {% endif %}
             </div>
             <div class="view_utd_box_element">
                 <p class="view_utd_box_element_label">Подпись Контрагента:</p>
-                {% if document.recipient_signature_name == None %}
+                {% if document.provider_signature_name == None %}
                     <p class="view_utd_box_element_label">Не подписан</p>
                 {% else %}
-                    <p class="view_utd_box_element_label">{{ document.recipient_signature_second_name }}</p>
-                    <p class="view_utd_box_element_label">{{ document.recipient_signature_name }}</p>
-                    <p class="view_utd_box_element_label">{{ document.recipient_signature_surname }}</p>
+                    <p class="view_utd_box_element_label">{{ document.provider_signature_second_name }}</p>
+                    <p class="view_utd_box_element_label">{{ document.provider_signature_name }}</p>
+                    <p class="view_utd_box_element_label">{{ document.provider_signature_surname }}</p>
                 {% endif %}
             </div>
             <div class="view_utd_box_element">
                 <p class="view_utd_box_element_label">Дата получения:</p>
                 {% if document.date_of_receipt == None %}
-                    <p class="view_utd_box_element_label">Контрагент ещё не получил документ</p>
+                    <p class="view_utd_box_element_label">Получатель ещё не получил документ</p>
                 {% else %}
                     <p class="view_utd_box_element_label">{{ document.date_of_receipt }}</p>
                 {% endif %}
@@ -69,26 +73,18 @@
             <div class="view_utd_box_element">
                 <p class="view_utd_box_element_label">Последнее обновление:</p>
                 {% if document.updated_at == None %}
-                    <p class="view_utd_box_element_label">Документ ещё не создан до конца</p>
+                    <p class="view_utd_box_element_label">Документ ещё не приняли</p>
                 {% else %}
                     <p class="view_utd_box_element_label">{{ document.updated_at }}</p>
                 {% endif %}
             </div>
-            <p class="view_utd_box_element view_utd_box_element_label">Список Номенклатур:</p>
-            {% for item in document_items %}
-                <div class="view_utd_box_element col bor">
-                    <p class="view_utd_box_element_label">Номенклатура: {{ item.product_name }}</p>
-                    <p class="view_utd_box_element_label">Количество: {{ item.product_quantity }}шт</p>
-                    <p class="view_utd_box_element_label">Итоговая сумма: {{ item.product_sum }}Р</p>
-                </div>
-            {% endfor %}
             <p class="view_utd_box_element view_utd_box_element_label">Документ:</p>
             {% if document_files != None %}
                 {% for file in document_files %}
-                    <img class="view_utd_box_element" src="{{ url_for('static', filename='utd_docs/' ~ document.id ~ '/' ~ file) }}" alt="Document Image">
+                    <img class="view_utd_box_element" src="{{ url_for('static', filename='contract_docs/' ~ document.id ~ '/' ~ file) }}" alt="Document Image">
                 {% endfor %}
             {% endif %}
-            {% if (document.counterparty == user.organization) and (document.recipient_signature == None and document.document_status != 1) %}
+            {% if (document.counterparty == user.organization) and (document.provider_signature == None and document.document_status != 1) %}
                 <a class="view_utd_box_element view_utd_box_element_label btn" href="{{ url_for('documents.sign_document', document_type=document.document_type, document_id=document.id) }}">Подписать</a>
             {% endif %}
         </div>

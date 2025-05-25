@@ -1,0 +1,51 @@
+{% extends "base.html.jinja" %}
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+    <div class="add_user_box">
+        <div class="add_user_box_text_box">
+            <p class="add_user_box_text_box_text_main">Добавить нового контрагента</p>
+            <p class="add_user_box_text_box_text_sub">Контрагент</p>
+        </div>
+        <form class="add_user_box_form" method="post">
+            {{ form.hidden_tag() }}
+            
+            <div class="add_user_box_form_element">
+                {{ form.name.label(class_="add_user_box_form_element_label") }}
+                {{ form.name(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.tin.label(class_="add_user_box_form_element_label") }}
+                {{ form.tin(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.email.label(class_="add_user_box_form_element_label") }}
+                {{ form.email(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.phone_number.label(class_="add_user_box_form_element_label") }}
+                {{ form.phone_number(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.address.label(class_="add_user_box_form_element_label") }}
+                {{ form.address(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <input type="submit" value="Добавить" class="add_user_box_form_submit">
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="auth_flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+{% endblock %}

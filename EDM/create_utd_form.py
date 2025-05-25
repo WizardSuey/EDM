@@ -19,7 +19,7 @@ class UtdDocumentForm(FlaskForm):
     sender_signature = IntegerField('Sender Signature')
     recipient_signature = IntegerField('Recipient Signature')
     date_of_receipt = DateField('Date of Receipt', format='%Y-%m-%d')
-    files = MultipleFileField('Выбери Файлы', validators=[FileRequired(), FileAllowed(['png', 'jpg', 'jpeg'], 'Only PNG, JPG, JPEG files are allowed!')])
+    files = MultipleFileField('Выберите Файлы', validators=[FileAllowed(['png', 'jpg', 'jpeg'], 'Only PNG, JPG, JPEG files are allowed!')])
     file_path = TextAreaField('File Path', validators=[Optional()])
 
     def __init__(self, *args, **kwargs):

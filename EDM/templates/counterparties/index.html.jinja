@@ -1,0 +1,21 @@
+{% extends "base.html.jinja" %}
+{% block title %}counterparties{% endblock %}
+
+{% block content %}
+    <div class="counterparties_box">
+        {% if counterparties %}
+            {% for counterparty in counterparties %}
+                {% if counterparty.id != 99999 %}
+                    <div class="counterparty_container">
+                        <p class="counterparty_container_label">{{ counterparty.name }}</p>
+                        <p class="counterparty_container_label">ИНН: {{ counterparty.tin }}</p>
+                        <p class="counterparty_container_label">{{ counterparty.address }}</p>
+                        <p class="counterparty_container_label">Контакты:</p>
+                        <p class="counterparty_container_label">Телефон: {{ counterparty.phone_number }}</p>
+                        <p class="counterparty_container_label">Почта: {{ counterparty.email }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

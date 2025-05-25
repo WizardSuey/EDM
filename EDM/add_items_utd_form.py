@@ -1,7 +1,8 @@
 from wtforms import IntegerField, StringField, DecimalField, SubmitField, Form
 from wtforms.validators import DataRequired, Length, NumberRange
+from flask_wtf import FlaskForm
 
-class UtdDocumentItemsForm(Form):
+class UtdDocumentItemsForm(FlaskForm):
     utd_document_id = IntegerField('UTD Document ID', validators=[DataRequired()])
     product_name = StringField('Product Name', validators=[DataRequired(), Length(max=255)])
     product_quantity = IntegerField('Product Quantity', validators=[DataRequired(), NumberRange(min=0)])

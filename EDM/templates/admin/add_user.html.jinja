@@ -1,0 +1,91 @@
+{% extends "base.html.jinja" %}
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+    <div class="add_user_box">
+        <div class="add_user_box_text_box">
+            <p class="add_user_box_text_box_text_main">Добавить нового пользователя</p>
+            <p class="add_user_box_text_box_text_sub">Пользователь</p>
+        </div>
+        <form class="add_user_box_form" method="post" action="{{ url_for('admin.add_user') }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="add_user_box_form_element">
+                {{ form.name.label(class_="add_user_box_form_element_label") }}
+                {{ form.name(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.second_name.label(class_="add_user_box_form_element_label") }}
+                {{ form.second_name(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.surname.label(class_="add_user_box_form_element_label") }}
+                {{ form.surname(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.date_of_birth.label(class_="add_user_box_form_element_label") }}
+                {{ form.date_of_birth(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.role.label(class_="add_user_box_form_element_label") }}
+                {{ form.role(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.has_signature.label(class_="add_user_box_form_element_label") }}
+                {{ form.has_signature(class_="add_user_box_form_element_checkbox") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.add_employee.label(class_="add_user_box_form_element_label") }}
+                {{ form.add_employee(class_="add_user_box_form_element_checkbox") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.organization.label(class_="add_user_box_form_element_label") }}
+                {{ form.organization(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.blocked.label(class_="add_user_box_form_element_label") }}
+                {{ form.blocked(class_="add_user_box_form_element_checkbox") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.login.label(class_="add_user_box_form_element_label") }}
+                {{ form.login(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.email.label(class_="add_user_box_form_element_label") }}
+                {{ form.email(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.send_tin.label(class_="add_user_box_form_element_label") }}
+                {{ form.send_tin(class_="add_user_box_form_element_checkbox") }}
+            </div>
+
+            <div class="add_user_box_form_element">
+                {{ form.password.label(class_="add_user_box_form_element_label") }}
+                {{ form.password(class_="add_user_box_form_element_field") }}
+            </div>
+
+            <input type="submit" value="Добавить" class="add_user_box_form_submit">
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="auth_flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+{% endblock %}

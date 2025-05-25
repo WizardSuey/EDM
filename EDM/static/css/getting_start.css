@@ -1,50 +1,49 @@
-.create_utd_box{
-    /* utd_form */
+.getting_start_container {
+    /* documents */
     position: static;
     width: 100%;
-    height: 100%;
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-
-
-    /* Inside Auto Layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin: 0px 0px;
-
-    background: rgb(230, 230, 230);
-}
-
-.create_utd_box_text_box {
-    /* Text */
-    position: static;
-    width: 443px;
-    height: 78px;
+    /* max-height: 800px; */
     /* Auto layout */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 10px;
-    padding: 0px;
-
+    /* overflow-y: auto; */
 
     /* Inside Auto Layout */
     flex: none;
     order: 0;
     flex-grow: 0;
     margin: 0px 0px;
+    background: rgb(230, 230, 230);
 }
 
-.create_utd_box_text_box_text_main,
-.create_utd_box_text_box_text_sub {
+.getting_start_container_form {
+/* items_from */
+    position: static;
+    /* max-height: 800px; */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+
+.getting_start_container_form_label {
     /* Создать новый документ */
     position: static;
-    width: 443px;
+    width: 100%;
     height: 41px;
     /* Auto layout */
     display: flex;
@@ -63,91 +62,24 @@
 
     color: rgb(0, 0, 0);
     font-family: Sansation;
-    font-size: 36px;
+    font-size: 25px;
     font-weight: 400;
     line-height: 40px;
     letter-spacing: 0px;
     text-align: left;
 }
 
-.create_utd_box_text_box_text_sub {
-    color: rgb(0, 0, 0);
-    font-family: Sansation;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 27px;
-    letter-spacing: 0px;
-    text-align: left;
-}
-
-.create_utd_box_form_element {
-    /* consignee */
-    position: static;
-    width: 620px;
-    /* height: 60px; */
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5px;
-    padding: 10px;
-
-
-    /* Inside Auto Layout */
-    flex: none;
-    flex-grow: 0;
-    margin: 0px;
-}
-
-.create_utd_box_form {
-    /* add_items_form */
-    position: static;
-    width: 100%;
-    /* height: 1000px; */
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.create_utd_box_form_element_label {
-    /* consignee_label */
-    position: static;
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5px;
-
-
-    /* Inside Auto Layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin: 0px;
-
-    color: rgb(0, 0, 0);
-    font-family: Sansation;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16px;
-    letter-spacing: 0px;
-    text-align: left;
-}
-
-.create_utd_box_form_element_field {
+.getting_start_container_form_field {
     /* consignee_field */
     position: static;
-    width: 100%;
+    width: 140px;
     height: 30px;
     /* Inside Auto Layout */
     flex: none;
     order: 1;
     flex-grow: 0;
     margin: 0px;
+    padding: 5px;
 
     box-sizing: border-box;
     border: 1px solid rgb(212, 212, 212);
@@ -157,24 +89,22 @@
 
     color: rgb(0, 0, 0);
     font-family: Sansation;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 16px;
     letter-spacing: 0px;
     text-align: left;
 }
 
-.create_utd_box_form_submit {
+.getting_start_container_form_submit {
     /* create */
     position: static;
-    width: 150px;
-    height: 45px;
     /* Auto layout */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding: 5px;
 
 
     /* Inside Auto Layout */
@@ -191,7 +121,7 @@
 
     color: rgb(255, 255, 255);
     font-family: Sansation;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 22px;
     letter-spacing: 0px;
@@ -199,11 +129,13 @@
 }
 
 @media screen and (max-width: 768px) {
-    .create_utd_box_form {
-        width: 100%;
+    .getting_start_container_form_label {
+        font-size: 18px;
     }
+}
 
-    .create_utd_box_form_element_field {
-        width: 100%;
+@media screen and (max-width: 425px) {
+    .getting_start_container_form_label {
+        font-size: 10px;
     }
 }

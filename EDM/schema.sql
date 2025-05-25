@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS document_statuses CASCADE;
 DROP TABLE IF EXISTS document_types CASCADE;
 DROP TABLE IF EXISTS counterparties CASCADE;
 DROP TABLE IF EXISTS utd_document_items CASCADE;
+DROP TABLE IF EXISTS register_requests CASCADE;
 
 CREATE TABLE user_roles (
     id SERIAL PRIMARY KEY,
@@ -31,13 +32,14 @@ CREATE TABLE users (
     second_name VARCHAR(100),
     surname VARCHAR(100),
     date_of_birth DATE, -- Renamed for consistency
-    role INTEGER NOT NULL,
+    role INTEGER DEFAULT NULL,
     has_signature BOOLEAN NOT NULL DEFAULT FALSE,
     add_employee BOOLEAN NOT NULL DEFAULT FALSE,
-    organization INTEGER NOT NULL,
+    organization INTEGER DEFAULT NULL,
     blocked BOOLEAN NOT NULL DEFAULT FALSE,
     login VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(80) NOT NULL,
+    send_tin BOOLEAN NOT NULL DEFAULT FALSE, -- Для проверки почсле регистрации
     password_digest VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITHOUT TIME ZONE,
@@ -128,7 +130,16 @@ CREATE TABLE contract_documents (
     FOREIGN KEY (client_signature) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- Indexes for frequently queried columns
+CREATE TABLE register_requests (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    tin VARCHAR(12) NOT NULL,
+    completed BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 CREATE INDEX idx_users_id ON users(id);
 CREATE INDEX idx_utd_documents_number ON utd_documents(number);
 CREATE INDEX idx_contract_documents_number ON contract_documents(number);

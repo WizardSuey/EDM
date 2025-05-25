@@ -26,7 +26,10 @@
                     {{ form.password.label(class_="auth_login_form_password_label") }}
                     {{ render_field(form.password, class="auth_login_form_password_input", align="center") }}
                 </div>
-                <input type="submit" value="Войти" class="auth_login_form_submit">
+                <div class="auth_login_form_buttons">
+                    <input type="submit" value="Войти" class="auth_login_form_submit">
+                    <a class="auth_login_form_register_link" href="{{ url_for('auth.register') }}">Зарегистрироваться</a>
+                </div>
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         <ul class=auth_flashes>

@@ -7,6 +7,7 @@
             <div class="dashboard_user_avatar">
                 <img class="dashboard_user_avatar" src="{{ url_for('static', filename='images/default_user_avatar.jpg') }}">
             </div>
+            <p class="dashboard_user_name">{{ user.name }}</p>
             <p class="dashboard_user_secondName">
                 {% if user.second_name == "None" %}
                     <p></p>
@@ -14,7 +15,6 @@
                     {{ user.second_name }}
                 {% endif %}
             </p>
-            <p class="dashboard_user_name">{{ user.name }}</p>
             <p class="dashboard_user_surname">
                 {% if user.surname == "None" %}
                     <p></p>
@@ -27,19 +27,11 @@
             <div class="dashboard_userInfo">
                 <div class="dashboard_userInfo_organization">
                     <p class="dashboard_userInfo_organization_text1">Организация:</p>
-                    {% if user.organization == 99999 %}
-                        <p class="dashboard_userInfo_organization_text2">У вас пока нет организации</p>
-                    {% else %}
-                        <p class="dashboard_userInfo_organization_text2">{{ user.organization_name }}</p>
-                    {% endif %}
+                    <p class="dashboard_userInfo_organization_text2">{{ user.organization_name }}</p>
                 </div>
                 <div class="dashboard_userInfo_role">
                     <p class="dashboard_userInfo_role_text1">Должность:</p>
-                    {% if user.role == 99999 %}
-                        <p class="dashboard_userInfo_role_text2">У вас пока нет роли</p>
-                    {% else %}
-                        <p class="dashboard_userInfo_role_text2">{{ user.role_name }}</p>
-                    {% endif %}
+                    <p class="dashboard_userInfo_role_text2">{{ user.role_name }}</p>
                 </div>
                 <div class="dashboard_userInfo_permission">
                     <p class="dashboard_userInfo_permission_text1">Ставить ПЭП:</p>
@@ -51,11 +43,15 @@
                     {% endif %}
                     </p>
                 </div>
-                {% if user.add_employee %}
-                    <div class="dashboard_userInfo_addEmployee">
-                        <a class="dashboard_userInfo_addEmployee_button" href="{{ url_for('admin.add_user') }}">Добавить сотрудника</a>
-                    </div>
-                {% endif %}
+                <div class="dashboard_userInfo_addEmployee">
+                    <a class="dashboard_userInfo_addEmployee_button" href="{{ url_for('admin.add_user') }}">Добавить сотрудника</a>
+                </div>
+                <div class="dashboard_userInfo_addEmployee">
+                    <a class="dashboard_userInfo_addEmployee_button" href="{{ url_for('admin.add_counterparty') }}">Добавить контрагента</a>
+                </div>
+                <div class="dashboard_userInfo_addEmployee">
+                    <a class="dashboard_userInfo_addEmployee_button" href="{{ url_for('admin.register_requests') }}">Заявки на подключение</a>
+                </div>
                 <div class="dashboard_userInfo_exit">
                     <a class="dashboard_userInfo_exit_button" href="{{ url_for('auth.logout') }}">Выйти</a>
                 </div>

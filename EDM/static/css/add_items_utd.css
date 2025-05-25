@@ -8,9 +8,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-left: 100px;
 
-
+    gap: 10px;
     /* Inside Auto Layout */
     flex: none;
     order: 0;
@@ -51,7 +50,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 10;
+    gap: 10px;
     padding: 0px;
 
 
@@ -156,6 +155,7 @@
     order: 1;
     flex-grow: 0;
     margin: 0px 0px;
+    overflow: hidden;
 }
 
 .utd_form_add_items_form_labels_product {
@@ -445,4 +445,48 @@
     letter-spacing: 0px;
     text-align: center;
     border: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .utd_form_add_items_form_labels_product,
+    .utd_form_add_items_form_item_product {
+        width: 230px;
+    }
+
+    .utd_form_add_items_form_labels_quantity,
+    .utd_form_add_items_form_item_quantity {
+        width: 70px;
+    }
+
+    .utd_form_add_items_form_labels_price,
+    .utd_form_add_items_form_item_price {
+        width: 70px;
+    }
+
+    .utd_form_add_items_form_labels_sum,
+    .utd_form_add_items_form_item_sum {
+        width: 230px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .utd_form_add_items_form_labels_product,
+    .utd_form_add_items_form_item_product {
+        width: 250px;
+    }
+
+    .utd_form_add_items_form_labels_quantity,
+    .utd_form_add_items_form_item_quantity {
+        width: 90px;
+    }
+
+    .utd_form_add_items_form_labels_price,
+    .utd_form_add_items_form_item_price {
+        width: 90px;
+    }
+
+    .utd_form_add_items_form_labels_sum,
+    .utd_form_add_items_form_item_sum {
+        width: 250px;
+    }
 }

@@ -1,0 +1,41 @@
+
+{% extends "base.html.jinja" %}
+{% block title %}incoming Documents{% endblock %}
+
+{% block content %}
+    <div class="incoming_documents_box">
+        {% for document in documents %}
+            {% if document.document_status != 1 %}
+                <div class="incoming_document">
+                    <div class="incoming_document_number">
+                        <p class="incoming_document_number_type">{{ document.document_type_name }}</p>
+                        <p class="incoming_document_number_text">Номер:</p>
+                        <p class="incoming_document_number_number">{{ document.number }}</p>
+                    </div>
+                    <div class="incoming_document_counterparty">
+                        <p class="incoming_document_counterparty_text">От:</p>
+                        <p class="incoming_document_counterparty_counterparty">{{ document.creator_counterparty_name }}</p>
+                    </div>
+                    <div class="incoming_document_status">
+                        <p class="incoming_document_status_text">Статус:</p>
+                        <p class="incoming_document_status_status">{{ document.document_status_name }}</p>
+                    </div>
+                    <div class="incoming_document_buttons">
+                        {% if document.document_status == 2 %}
+                            <a class='incoming_document_buttons_view' href="{{ url_for('documents.receive_document', document_type=document.document_type, document_id=document.id) }}">Принять</a>
+                        {% else %}
+                            <a class="incoming_document_buttons_view" href="
+                                {% if document.document_type == 1 %}
+                                    {{ url_for('documents.view_utd', document_id=document.id) }}
+                                {% elif document.document_type == 2 %}
+                                    {{ url_for('documents.view_contract', document_id=document.id) }}
+                                {% endif %}
+                            ">Просмотр</a>
+                        {% endif %}
+                        {# <a class="incoming_document_buttons_edit">Редактировать</a> #}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

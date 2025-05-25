@@ -8,7 +8,6 @@
         </div>
         <div class="header_elements_user">
             <div class="user_username">
-                <p class="user_username_name_text">{{ user.name }}</p>
                 <p class="user_username_second_name_text">
                     {% if user.second_name == "None" %}
                         <p></p>
@@ -16,6 +15,7 @@
                         {{ user.second_name }}
                     {% endif %}
                 </p>
+                <p class="user_username_name_text">{{ user.name }}</p>
                 <p class="user_username_surname_text">
                     {% if user.surname == "None" %}
                         <p></p>
