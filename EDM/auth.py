@@ -127,6 +127,8 @@ def getting_start():
 
 @bp.route("/register", methods=('GET', 'POST'))
 def register():
+    if g.user:
+        return redirect(url_for('dashboard.index'))
     form = RegisterForm(request.form)
     if request.method == "POST":
         if form.validate():

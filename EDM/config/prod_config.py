@@ -1,2 +1,16 @@
-HOST = '192.168.3.123'
-PORT = 5144
+SECRET_KEY = 'prod'
+TESTING = False
+
+UTD_DOCS_UPLOAD_FOLDER = 'EDM/static/utd_docs'
+CONTRACT_DOCS_UPLOAD_FOLDER = 'EDM/static/contract_docs'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
+DATABASE_HOST = 'localhost'
+DATABASE_PORT = 5432
+DATABASE_USER = 'postgres'
+DATABASE_PASSWORD = '48BitColor48'
+DATABASE_NAME = 'EDM'
+
+# HOST = '0.0.0.0'
+HOST = '0.0.0.0'
+# PORT = 5144

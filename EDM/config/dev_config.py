@@ -3,7 +3,7 @@ TESTING = False
 
 UTD_DOCS_UPLOAD_FOLDER = 'EDM/static/utd_docs'
 CONTRACT_DOCS_UPLOAD_FOLDER = 'EDM/static/contract_docs'
-ALLOWED_EXTENSIONS = {'docx'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 DATABASE_HOST = 'localhost'
 DATABASE_PORT = 5432
@@ -12,5 +12,4 @@ DATABASE_PASSWORD = '48BitColor48'
 DATABASE_NAME = 'EDM'
 
 HOST = '192.168.3.123'
-# HOST = '127.0.0.1'
 PORT = 5144
