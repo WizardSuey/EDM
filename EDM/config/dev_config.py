@@ -5,7 +5,7 @@ UTD_DOCS_UPLOAD_FOLDER = 'EDM/static/utd_docs'
 CONTRACT_DOCS_UPLOAD_FOLDER = 'EDM/static/contract_docs'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-DATABASE_HOST = 'localhost'
+DATABASE_HOST = '192.168.3.3'
 DATABASE_PORT = 5432
 DATABASE_USER = 'postgres'
 DATABASE_PASSWORD = '48BitColor48'
