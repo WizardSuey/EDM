@@ -11,6 +11,6 @@ DATABASE_USER = 'ergodocsbd_user'
 DATABASE_PASSWORD = 'o6RIa0OBaLrqNDplHh3LPNLzgK2p0hWb'
 DATABASE_NAME = 'ergodocsbd'
 
-# HOST = '0.0.0.0'
-HOST = 'localhost'
+HOST = '0.0.0.0'
+#HOST = 'localhost'
 # PORT = 5144
