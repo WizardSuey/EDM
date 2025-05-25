@@ -10,6 +10,13 @@ import psycopg2
 def get_db():
     """  Получить подключение к базе данных. """
     if 'db' not in g:
+
+        print("Connecting to database with the following parameters:")
+        print(f"Host: {current_app.config['DATABASE_HOST']}")
+        print(f"Port: {current_app.config['DATABASE_PORT']}")
+        print(f"User: {current_app.config['DATABASE_USER']}")
+        print(f"Database: {current_app.config['DATABASE_NAME']}")
+        
         g.db = psycopg2.connect(
             f"host={current_app.config['DATABASE_HOST']}\
                 port={current_app.config['DATABASE_PORT']}\
