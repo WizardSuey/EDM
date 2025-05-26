@@ -137,7 +137,7 @@ def register():
             cur = db.cursor()
             try:
                 cur.execute(
-                    "INSERT INTO users (name, second_name, surname, date_of_birth, login, email, password_digest, organization, role) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    "INSERT INTO users (name, second_name, surname, date_of_birth, login, email, password_digest, organization, role, has_signature) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                     (form.name.data, 
                      form.second_name.data, 
                      form.surname.data, 
@@ -146,7 +146,8 @@ def register():
                      form.email.data, 
                      generate_password_hash(form.password.data),
                      99999,
-                     99999)
+                     99999,
+                     True)
                 )
                 db.commit()
                 cur.execute(

@@ -4,13 +4,9 @@ from flask_socketio import SocketIO
 import os
 import logging
 
-logger = logging.getLogger('waitress')
-logger.setLevel(logging.INFO)
+# logger = logging.getLogger('waitress')
+# logger.setLevel(logging.INFO)
 
-# logger = logging.getLogger(__name__)
-# logging.basicConfig(filename='myapp.log', level=logging.INFO)
-
-socketio = SocketIO()
 
 def create_app(config: str = 'dev'):
     app = Flask(__name__)
@@ -27,8 +23,6 @@ def create_app(config: str = 'dev'):
 
     from . import databae
     databae.init_app(app)
-
-    socketio.init_app(app)
 
     from . import auth
     app.register_blueprint(auth.bp)
